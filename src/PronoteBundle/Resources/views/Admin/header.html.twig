@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset('bootstrap/img/favicon.ico') }}">
+    <link href={{ asset('bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <title>École Primaire Privée - Espace Administrateur</title>
+
+    <link href={{ asset('bootstrap/css/bootstrap.css') }} rel="stylesheet">
+    <link href={{ asset('bootstrap/css/dataTables.bootstrap4.min.css') }} rel="stylesheet">
+
+    <!-- Imports JS de la DATATABLE (utile aussi pour la Modale), laisser dans le head-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <SCRIPT type="text/javascript">
+        var idSuppression = 0;
+        var idModification = 0;
+        var idEmploiSelectionne = 0;
+        var idClasse = 0;
+        var idSalle =0;
+    </SCRIPT>
+
+</head>
+
+<body class="text-center" style="background-color: #ffffff;font-family: 'Roboto';font-weight: 200;">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-inverse" style="height:7ch;background-color: #189d8c;font-size:15px;font-weight: 300;">
+	
+	<!-- Exit si session expirée-->
+    {% set session = render(controller('PronoteBundle:Admin:session',{ 'max': 0 })) %}
+    {% if session |length < 3 %}
+        <script>
+        	alert("\nBonjour\n\nVotre session a expiré, merci de vous identifier de nouveau\n\nÀ tout de suite");
+        	window.location.href = "../exitAdminSession/";
+        </script>
+    {% endif %}
+    <!-- FIN Exit si session expirée-->
+	
+	
+    {% if '/showOneEmploiDuTemps/' in app.request.pathinfo %}
+        <form action="{{app.request.basePath}}/admin/showAllEmploisDuTemps/" method="post">
+              <input src="{{app.request.basePath}}/{{logoEcole}}" type="image" style="padding-top:7px;border:0;cursor: pointer;width:110px;background-color: #189d8c;">
+        </form> 
+        
+    {% else %}
+ 
+        <form action="{{app.request.basePath}}/admin/home/" method="post">
+              <input src="{{app.request.basePath}}/{{logoEcole}}" type="image" style="padding-top:7px;border:0;cursor: pointer;width:110px;background-color: #189d8c;">
+        </form> 
+
+    {% endif %}
+
+  <button class="navbar-toggler" style="background-color: #e9ebee" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarText" style="background-color: #189d8c;">  
+        <ul class="navbar-nav mr-auto">
+        
+        </ul>
+        <span class="navbar-text" style="color: #ffffff;">
+            Administrateur : {{ "now"|date("d/m/Y", "Europe/Paris") }} <a href="{{app.request.basePath}}/admin/exitAdminSession/"><img src={{ asset('bootstrap/img/exit.png') }} width="25" height="25"></a>
+        </span>
+  </div>
+</nav>
+
+
+
+

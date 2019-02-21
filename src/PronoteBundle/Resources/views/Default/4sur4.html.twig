@@ -1,0 +1,84 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;">
+        <thead>
+
+        <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #9cd100;border: none; color: #FFFFFF;">
+        	<form action="{{app.request.basePath}}/assiduite/" method="post">
+                  <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                  {% if pageData4 |length > 0 %}
+         			  	  <input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        		  {% endif %}
+                  <input type="submit" value="ASSIDUITÉ" style="color:white;background-color:#9cd100;border:0;cursor: pointer;">
+            </form> 
+        </div>
+        
+        </thead>
+        <tbody>
+        
+        {% for key in pageData6 %}
+        
+			{% if key.messagePasDeAssiduites is defined %}
+                
+    			<tr>
+                    <td style="background-color: #fff;padding: .15rem;vertical-align: middle;-color: #ed494c;font-weight:600;text-align: justify;">{{ key.messagePasDeAssiduites }}</td>
+                </tr>
+				
+    		{% else %}
+         
+                <tr>
+                    <td scope="row" style="width:40%; color: #000000;vertical-align:middle;font-weight:bold;">{{ key.typeFaute |capitalize}}</td>
+                    <td style="color:#775ca1;padding: .15rem; vertical-align: middle;background-color: #FFFFFF" >{{ key.detailsAssiduite |capitalize}}<br> ({{ key.dateAssiduite }})</td>
+                </tr>
+                
+            {% endif %}
+
+        {% endfor %}
+        
+        </tbody>
+    </table>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;">
+        <thead>
+
+        <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #9cd100;border: none; color: #FFFFFF;">ACTIVITÉS SCOLAIRES</div>
+        
+        </thead>
+        <tbody>
+        {% for key in pageData7 %}
+        	{% if 'aucune' in key.descriptionActivite  %}
+        		<td style="background-color: #fff;padding: .15rem;vertical-align: middle;font-weight:600;text-align: justify;">{{ key.descriptionActivite |capitalize}}</td>
+        	{% else %}
+            <tr>
+                <td scope="row" style="width:40%; color: #000000;vertical-align:middle;font-weight:bold;">{{ key.dateActivite }}</td>
+                <td style="color:#775ca1;padding: .15rem; vertical-align: middle;background-color: #FFFFFF">{{ key.descriptionActivite |capitalize}}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;">
+        <thead>
+        
+        <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #9cd100;border: none; color: #FFFFFF;">AGENDA</div>
+        
+        </thead>
+        <tbody>
+        {% for key in pageData8 %}
+            <tr>
+                <td style="background-color: #fff;padding: .15rem;vertical-align: middle;-color: #ed494c;font-weight:600;text-align: justify;">{{ key.descriptionObservation |capitalize}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    
+    
+</div>
+
+<img src="{{ asset('bootstrap/img/professeurs.jpg') }}" style="float:right;bottom: 0;" width="100%" height="100%">
+

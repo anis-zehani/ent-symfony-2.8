@@ -1,0 +1,201 @@
+{%  include 'PronoteBundle:Admin:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+   
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Eleve-->
+        <div class="col-sm-3" style="text-align: left;">
+            <form action="../addEleve/" method="post" name="formEleves" id="formEleves">
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Gestion des élèves</label>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputNomEleve"><b>Nom (*)</b></label>
+                        <input type="text" class="form-control" id="nomEleve" name="nomEleve" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPrenomEleve"><b>Prénom (*)</b></label>
+                        <input type="text" class="form-control" id="prenomEleve" name="prenomEleve" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputParentEleve"><b>Choisir un parent (*)</b></label><br>
+                        <select id="parentEleve" name="parentEleve" style="border-radius: 10px;width: 100%" required>
+                            <option value="">Vous devez choisir un parent</option>
+                            {% for key in allParents %}
+                                <option value="{{ key.idParent }}">{{ key.prenomParent|capitalize }} {{ key.nomParent|capitalize }} ({{ key.loginParent }})</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputClasseEleve"><b>Choisir une classe (*)</b></label>
+
+                        <select id="classeEleve" name="classeEleve" style="border-radius: 10px;width: 100%" required>
+                            <option value="">Vous devez choisir une classe</option>
+                            {% for key in allClasses %}
+                                <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                            {% endfor %}
+                           		<option value="0">Aucune Classe</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Ajouter un éleve" style="background-color: #189d8c;border: none;"/>
+                </div>
+
+                <input type="hidden" id="idEleve" name="idEleve" value="idEleve"/>
+
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  onclick="resetEleve();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;"/>
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+				
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;font-weight: 600;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Élève</th>
+                    <th>Parent</th>
+                    <th>Classe</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for key in allEleves %}
+                    <tr>
+                        <td style="text-align:center;background-color: #FFFFFF">
+                            <a href="#" onclick="idSuppression={{key.idEleve}};document.getElementById('idEleveDelete').setAttribute('value',idSuppression); $('#ModaleEleve').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td>{{ key.prenomEleve|capitalize }} {{ key.nomEleve|capitalize }}</td>
+                        <td>{{ key.prenomParentEleve|capitalize }} {{ key.nomParentEleve|capitalize }}</td>
+                        <td>{{ key.nomClasseEleve|capitalize }}</td>
+                        <td style="text-align:center;background-color: #FFFFFF"><a href="#" id="btnModifier" onclick="modifierEleve('{{ key.idEleve }}','{{ key.nomEleve }}','{{ key.prenomEleve }}','{{ key.idParentEleve }}','{{ key.idClasseEleve }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-row">
+            <!--------------------------- Feêtre POP-UP la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleEleve" tabindex="-1" role="dialog" aria-labelledby="exampleModaleEleveTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="../deleteEleve/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer un élève</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="text-align:left;">
+                                Attention, vous êtes sur le point de supprimer cet élève. Les données suivantes qui lui sont liées vont être supprimées :<br><br>
+                                -Notes données à cet élève.<br>
+                                -Assiduités liées à cet élève.<br>
+                                -Bulletins scolaires associés à cet élève.<br>
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idEleveDelete" name="idEleveDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider" style="background-color: red;border-color: red;">Je continu à ma responsabilité</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau Élève)-->
+<SCRIPT>
+    function modifierEleve(idEleve, nomEleve, prenomEleve,idParentEleve,idClasseEleve)
+    {
+        document.getElementById("idEleve").value = idEleve;
+        document.getElementById("nomEleve").value = nomEleve;
+        document.getElementById("prenomEleve").value = prenomEleve;
+        document.getElementById("parentEleve").value = idParentEleve;
+        document.getElementById("classeEleve").value = idClasseEleve;
+        //console.log(idClasseEleve);
+        document.getElementById("btnAjouter").value = 'Modifier un élève';
+        var formulaire = document.getElementById('formEleves');
+        formulaire.setAttribute("action", "../updateEleve/");
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Élève)-->
+<SCRIPT>
+    function resetEleve()
+    {
+
+        document.getElementById("nomEleve").value = '';
+        document.getElementById("prenomEleve").value = '';
+        document.getElementById("parentEleve").value = '';
+        document.getElementById("classeEleve").value = '';
+
+        document.getElementById("btnAjouter").value = 'Ajouter un élève';
+        var formulaire = document.getElementById('formEleves');
+        formulaire.setAttribute("action", "../addEleve/");
+
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Élève-->
+<SCRIPT type="text/javascript">
+    $('#ModaleEleve').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+    })
+</SCRIPT>
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "Chercher :",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+{%  include 'PronoteBundle:Admin:footer.html.twig' %}

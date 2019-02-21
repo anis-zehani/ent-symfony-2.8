@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Google Analytics - Global site tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-38615240-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-38615240-7');
+    </script>
+	
+    <style>
+    	.dropdown-menu-center {
+            right: auto;
+            left: 50%;
+            -webkit-transform: translate(-50%, 0);
+            -o-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+        }
+        .blink_me {
+            -webkit-animation-name: blinker;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+
+            -moz-animation-name: blinker;
+            -moz-animation-duration: 2s;
+            -moz-animation-timing-function: linear;
+            -moz-animation-iteration-count: infinite;
+
+            animation-name: blinker;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @-moz-keyframes blinker {
+            0% { opacity: 1.0; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1.0; }
+        }
+
+        @-webkit-keyframes blinker {
+            0% { opacity: 1.0; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1.0; }
+        }
+
+        @keyframes blinker {
+            0% { opacity: 1.0; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1.0; }
+        }
+
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {height: 450px}
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {height:auto;}
+        }
+       
+        nav li a:hover 
+        {
+        	
+        	text-decoration: underline;
+        }
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href={{ asset('bootstrap/img/favicon.ico') }}>
+
+    <title>École Primaire Privée - Smartgraphe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href={{ asset('bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href={{ asset('bootstrap/css/signin.css') }} rel="stylesheet">
+
+</head>
+<body class="text-center" style="background-color: #fff;font-family: 'Roboto';font-weight: 200;">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-inverse" style="height:7ch;background-color: #45a6bf;font-size:15px;font-weight: 300;">
+	
+	<!-- Exit si session expirée-->
+    {% set session = render(controller('PronoteBundle:Login:session',{ 'max': 0 })) %}
+    {% if session |length < 3 %}
+        <script>
+        	alert("\nBonjour\n\nVotre session a expiré, merci de vous identifier de nouveau\n\nÀ tout de suite");
+        	window.location.href = "../exit/";
+        </script>
+    {% endif %}
+    <!-- FIN Exit si session expirée-->
+    
+	<!-- LOGO Cliquable Début-->		
+    <form action="{{app.request.basePath}}/accueil/" method="post">
+         <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+         {% if pageData4 |length > 0 %}
+         		<input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+         {% endif %}
+         <input src="{{app.request.basePath}}/{{logoEcole}}" type="image" value="Acceuil" style="padding-top:7px;border:0;cursor: pointer;width:110px;">
+    </form> 
+    <!-- LOGO Cliquable Fin-->		
+    
+    <!-- NOTIFICATIONS Début-->
+         
+    <div class="btn-group">    	
+         {% if pageData11 |length > 0 or pageData12 |length > 0%}
+         
+            <button style="background-color:#45a6bf;border-color:#45a6bf;" class="btn btn-secondary " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="badge badge-light" style="background-color:#45a6bf;color:#fff;font-size:14px;"><img src="{{ asset('bootstrap/img/notification-on.png') }}" style="width:4ch;height:4ch;" alt="Notifications">     <sup>{{ pageData11 |length + pageData12 |length}}</sup></span>
+            </button>
+                   
+            <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenu1" style="font-size:12px;background-color:#fff;margin-top:15px;border: 2px solid #f3f3f4;color:black;">  
+               <!-- NOTIFICATIONS ÉLEVE-->
+               {% if pageData11 is defined %}
+                   {% for key in pageData11 %}
+                      <li><a class="dropdown-item"  style="cursor: pointer;color:black;" onclick="deactivateNotification({{ key.idNotification }} , '{{ key.lienNotification }}'.split('/')[0],'{{ key.lienNotification }}'.split('/')[1],'{{ key.lienNotification }}'.split('/')[2])">{{ key.descriptionNotification }}</a></li>
+                   {% endfor %}
+               {% endif %}
+               
+               <!-- NOTIFICATIONS CLASSE-->
+               {% if pageData12 is defined %}
+                   {% for key1 in pageData12 %}
+                   		{% if 'login/' in key1.lienNotification %}
+                      		<li><a class="dropdown-item"  style="cursor: pointer;color:black;" onclick="deactivateNotificationClasse({{ key1.idNotification }} , '{{ key1.lienNotification }}',{{ pageData1.idParent }},null,{{ pageData4[0].idEleve }});">{{ key1.descriptionNotification }}</a></li>
+                   		{% else %}
+                   			<li><a class="dropdown-item"  style="cursor: pointer;color:black;" onclick="deactivateNotificationClasse({{ key1.idNotification }} , '{{ key1.lienNotification }}',{{ pageData1.idParent }},{{ pageData2[0].idClasse }},{{ pageData4[0].idEleve }});">{{ key1.descriptionNotification }}</a></li>
+                   		{% endif %}
+                   {% endfor %}
+               {% endif %}
+            </ul>
+         
+          {% else %}
+             <button style="background-color:#45a6bf;border-color:#45a6bf;" class="btn btn-secondary " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="badge badge-light" style="background-color:#45a6bf;color:#fff;font-size:14px;"><img src="{{ asset('bootstrap/img/notification-off.png') }}" style="width:4ch;height:4ch;" alt="Notifications">     <sup>0</sup></span>
+             </button>
+
+          {% endif %} 
+    </div>
+    <!-- NOTIFICATIONS Fin-->
+            
+    <button class="navbar-toggler" style="background-color: #e9ebee" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: #45a6bf;text-align:left;">
+        <ul class="navbar-nav mr-auto">
+        
+        	<!-- ACCEUIL -->
+            {% if '/login/' in app.request.pathinfo %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Revenir vers l'acceuil" href="#" style="padding-left:3px;padding-bottom:2px;">Acceuil</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <form action="{{app.request.basePath}}/accueil/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      {% if pageData4 |length > 0 %}
+         			  		<input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+        			  {% endif %}
+                      <input type="submit" value="Acceuil" style="padding-left:3px;color:white;background-color:#45a6bf;padding-top:8px;border:0;cursor: pointer;">
+                    </form> 
+                </li>
+            {% endif %}
+
+            <!-- EMPLOI DU TEMPS -->
+            {% if '/emploi/' in app.request.pathinfo %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Consulter L'emploi du Temps" href="#" style="padding-left:3px;padding-bottom:2px;">Emploi du temps</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      
+                      {% if pageData4 |length > 0 %}
+         			  		<input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+        			  {% endif %}
+        			  
+                      {% if pageData2 |length > 0 %}
+         			  		<input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+        			  {% endif %}
+                      
+                      <input type="submit" value="Emploi du temps" style="padding-left:3px;color:white;background-color:#45a6bf;padding-top:8px;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+                </li>
+            {% endif %}
+           
+            <!-- NOTES -->
+            {% if '/notes/' in app.request.pathinfo %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Consulter Toutes les Notes" href="#" style="padding-left:3px;padding-bottom:2px;">Notes</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    {% if pageData4 is defined %}
+                        <form action="{{app.request.basePath}}/notes/" method="post">
+                          <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                          {% if pageData4 |length > 0 %}
+         			  	  		<input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        			      {% endif %}
+                          
+                          <input type="submit" value="Notes" style="padding-left:3px;color:white;background-color:#45a6bf;padding-top:8px;border:0;cursor: pointer;">
+                        </form> 
+                    {% endif %}
+                </li>
+            {% endif %}
+
+            <!-- TRAVAIL A FAIRE -->
+            {% if '/travailafaire/' in app.request.pathinfo %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Consulter Le Travail à faire (Devoirs de Maison)" href="#" style="padding-left:3px;padding-bottom:2px;">Travail à faire</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    {% if pageData4 is defined %}
+                        <form action="{{app.request.basePath}}/travailafaire/" method="post">
+                          <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                          {% if pageData4 |length > 0 %}
+         			  	  		<input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        			      {% endif %}
+        			      
+                          {% if pageData2 |length > 0 %}
+         			  	  		<input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+        			      {% endif %}
+                          <input type="submit" value="Travail à faire" style="padding-left:3px;color:white;background-color:#45a6bf;padding-top:8px;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                        </form> 
+                    {% endif %}
+                </li>
+            {% endif %}
+
+            <!-- ASSIDUITé -->
+            {% if '/assiduite/' in app.request.pathinfo %}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Consulter L'Assiduité de l'élève (Absences, Retards, Sanctions)" href="#" style="padding-left:3px;padding-bottom:2px;">Assiduité</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    {% if pageData4 is defined %}
+                        <form action="{{app.request.basePath}}/assiduite/" method="post">
+                          <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                          {% if pageData4 |length > 0 %}
+         			  	  <input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        			      {% endif %}
+                          <input type="submit" value="Assiduité" style="padding-left:3px;color:white;background-color:#45a6bf;padding-top:8px;border:0;cursor: pointer;">
+                        </form> 
+                    {% endif %}
+                </li>
+            {% endif %}
+        </ul>
+		
+
+        <span class="navbar-text" style="color: #ffffff">
+            
+
+                        &nbsp;<select id="listeEnfants"  onChange="RefreshData(this)" style="border-radius: 6px;text-align:right">
+                            {% for key in pageData2 %}
+                            	<option value="{{key.idEnfant}}-{{key.idClasse}}" label="{{key.prenomEnfant|capitalize}} {{key.nomEnfant|capitalize}}({{key.nomClasse}})">{{ key.prenomEnfant |capitalize}} {{ key.nomEnfant |capitalize}} ({{ key.nomClasse }})</p></option>     
+                            {% endfor %}
+                        </select>
+             
+        </span>
+        
+        
+        
+        <div class="btn-group">
+                <button style="background-color:#45a6bf;border-color:#45a6bf;" class="btn btn-secondary " type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="badge badge-light" style="background-color:#45a6bf;color:#fff;font-size:14px;"><img src="{{ asset('bootstrap/img/profil.png') }}" style="width:4ch;height:4ch;" alt="Configuration"></span>
+                </button>
+                       
+                <ul class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenu1" style="font-size:12px;background-color:#fff;margin-top:15px;border: 2px solid #f3f3f4;color:black;">  
+    
+                   
+					<li><a class="dropdown-item" style="cursor: pointer;color:black;">>> Mes préférences</a></li>
+					
+    				<li><a class="dropdown-item" style="cursor: pointer;color:black;" href="{{app.request.basePath}}/exitParentSession/">>> Quitter</a></li>
+    				
+                </ul>         
+    	</div>
+		
+
+</div>
+
+</nav>
+
+
+
+
+

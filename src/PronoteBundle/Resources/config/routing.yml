@@ -1,0 +1,584 @@
+smartgraphe_loginPage:
+    path:     /smartgraphe/
+    defaults: { _controller: PronoteBundle:Smartgraphe:index }
+  
+smartgraphe_accueil:
+    path:     /smartgraphe/private/
+    defaults: { _controller: PronoteBundle:Smartgraphe:accueil }
+    methods:  [POST]
+    
+smartgraphe_showAllEcoles:
+    path:     /smartgraphe/showAllEcoles/
+    defaults: { _controller: PronoteBundle:Smartgraphe:showAllEcoles }
+    methods:  [GET]
+ 
+smartgraphe_addEcole:
+    path:     /smartgraphe/addEcole/
+    defaults: { _controller: PronoteBundle:Smartgraphe:addEcole }
+    methods:  [POST]
+    
+smartgraphe_updateEcole:
+    path:     /smartgraphe/updateEcole/
+    defaults: { _controller: PronoteBundle:Smartgraphe:updateEcole }
+    methods:  [POST]
+
+smartgraphe_deleteEcole:
+    path:     /smartgraphe/deleteEcole/
+    defaults: { _controller: PronoteBundle:Smartgraphe:deleteEcole }
+    methods:  [POST]
+    
+smartgraphe_showEcole:
+    path:     /smartgraphe/showEcole/
+    defaults: { _controller: PronoteBundle:Smartgraphe:showEcole }
+    methods:  [POST]
+      
+smartgraphe_archiveUnarchiveLogo:
+    path:     /smartgraphe/archiveUnarchiveLogo/
+    defaults: { _controller: PronoteBundle:Smartgraphe:archiveUnarchiveLogo }
+    methods:  [POST]
+    
+###################################################################################
+###################################################################################
+###################################################################################
+    
+index_page:
+    path:     /
+    defaults: { _controller: PronoteBundle:Default:index }
+    
+parent_exit:
+    path:     /exitParentSession/
+    defaults: { _controller: PronoteBundle:Login:exitParentSession }
+
+# Login Principal : POST (new)
+login_controller:
+    path:     /login/
+    defaults: { _controller: PronoteBundle:Login:index }
+    methods:  [POST]
+
+# Accueil : POST (new)
+login_controller_POST:
+    path:     /accueil/
+    defaults: { _controller: PronoteBundle:Login:index }
+    methods:  [POST]
+
+# Emploi du temps : POST (new)
+emploi_du_temps_avec_classeID:
+    path:     /emploi/
+    defaults: { _controller: PronoteBundle:Login:emploi }
+    methods:  [POST]
+   
+# Travail à faire : POST (new)
+travail_a_faire_eleve:
+    path:     /travailafaire/
+    defaults: { _controller: PronoteBundle:Login:devoirs }
+    methods:  [POST]
+
+# NOTES : POST (new)
+notes_eleve_POST:
+    path:     /notes/
+    defaults: { _controller: PronoteBundle:Login:notes }
+    methods:  [POST]
+
+# ASSIDUITÉ : POST (new)
+assiduite_eleve_POST:
+    path:     /assiduite/
+    defaults: { _controller: PronoteBundle:Login:assiduite }
+    methods:  [POST]
+
+# Désactiver Notification Élève : POST (new)
+deactivateNotification_POST:
+    path:     /deactivateNotification/
+    defaults: { _controller: PronoteBundle:Login:deactivateNotification }
+    methods:  [POST]
+    
+# Désactiver Notification Classe : POST (new)    
+deactivateNotificationClasse_POST:
+    path:     /deactivateNotificationClasse/
+    defaults: { _controller: PronoteBundle:Login:deactivateNotificationClasse }
+    methods:  [POST]
+
+parent_session:
+    path:     /login/session/
+    defaults: { _controller: PronoteBundle:Login:session }
+   
+###################################################################################
+###################################################################################
+###################################################################################
+admin_session:
+    path:     /admin/session/
+    defaults: { _controller: PronoteBundle:Admin:session }
+
+admin_Homepage:
+    path:     /admin/
+    defaults: { _controller: PronoteBundle:Admin:index }
+
+admin_Login:
+    path:     /admin/login/
+    defaults: { _controller: PronoteBundle:Admin:index }
+    methods:  [POST]
+
+admin_Main_screen:
+    path:     /admin/home/
+    defaults: { _controller: PronoteBundle:Admin:main }
+    
+admin_exit:
+    path:     /admin/exitAdminSession/
+    defaults: { _controller: PronoteBundle:Admin:exitAdminSession }
+
+###################################################################################
+###################################################################################
+professeur_session:
+    path:     /professeur/session/
+    defaults: { _controller: PronoteBundle:Professeurs:session }
+
+professeur_Homepage:
+    path:     /professeur/
+    defaults: { _controller: PronoteBundle:Professeurs:index }
+
+professeur_Login:
+    path:     /professeur/login/
+    defaults: { _controller: PronoteBundle:Professeurs:index }
+    methods:  [POST]
+    
+professeur_Main_screen:
+    path:     /professeur/home/
+    defaults: { _controller: PronoteBundle:Professeurs:main }
+    
+professeur_exit:
+    path:     /professeur/exitProfesseurSession/
+    defaults: { _controller: PronoteBundle:Professeurs:exitProfesseurSession }
+
+###################################################################################
+
+###################################################################################
+###################################################################################
+###################################################################################
+
+showAllParents:
+    path:     /admin/showAllParents/
+    defaults: { _controller: PronoteBundle:Admin:showAllParents }
+    methods:  [POST]
+
+add_Parent:
+    path:     /admin/addParent/
+    defaults: { _controller: PronoteBundle:Admin:addParent }
+    methods:  [POST]
+
+update_Parent:
+    path:     /admin/updateParent/
+    defaults: { _controller: PronoteBundle:Admin:updateParent }
+    methods:  [POST]
+
+delete_Parent:
+    path:     /admin/deleteParent/
+    defaults: { _controller: PronoteBundle:Admin:deleteParent }
+    methods:  [POST]
+    
+###################################################################################   
+
+showAllEleves:
+    path:     /admin/showAllEleves/
+    defaults: { _controller: PronoteBundle:Admin:showAllEleves }
+    methods:  [POST]
+
+add_Eleve:
+    path:     /admin/addEleve/
+    defaults: { _controller: PronoteBundle:Admin:addEleve }
+    methods:  [POST]
+
+delete_Eleve:
+    path:     /admin/deleteEleve/
+    defaults: { _controller: PronoteBundle:Admin:deleteEleve }
+    methods:  [POST]
+
+update_Eleve:
+    path:     /admin/updateEleve/
+    defaults: { _controller: PronoteBundle:Admin:updateEleve }
+    methods:  [POST]
+    
+###################################################################################
+
+showAllProfesseurs:
+    path:     /admin/showAllProfesseurs/
+    defaults: { _controller: PronoteBundle:Admin:showAllProfesseurs }
+    methods:  [POST]
+
+add_Professeur:
+    path:     /admin/addProfesseur/
+    defaults: { _controller: PronoteBundle:Admin:addProfesseur }
+    methods:  [POST]
+
+delete_Professeur:
+    path:     /admin/deleteProfesseur/
+    defaults: { _controller: PronoteBundle:Admin:deleteProfesseur }
+    methods:  [POST]
+
+update_Professeur:
+    path:     /admin/updateProfesseur/
+    defaults: { _controller: PronoteBundle:Admin:updateProfesseur }
+    methods:  [POST]
+
+###################################################################################
+
+showAllClasses:
+    path:     /admin/showAllClasses/
+    defaults: { _controller: PronoteBundle:Admin:showAllClasses }
+    methods:  [POST]
+
+add_Classe:
+    path:     /admin/addClasse/
+    defaults: { _controller: PronoteBundle:Admin:addClasse }
+    methods:  [POST]
+
+delete_Classe:
+    path:     /admin/deleteClasse/
+    defaults: { _controller: PronoteBundle:Admin:deleteClasse }
+    methods:  [POST]
+
+update_Classe:
+    path:     /admin/updateClasse/
+    defaults: { _controller: PronoteBundle:Admin:updateClasse }
+    methods:  [POST]
+
+###################################################################################
+
+showAllSalles:
+    path:     /admin/showAllSalles/
+    defaults: { _controller: PronoteBundle:Admin:showAllSalles }
+    methods:  [POST]
+
+add_Salle:
+    path:     /admin/addSalle/
+    defaults: { _controller: PronoteBundle:Admin:addSalle }
+    methods:  [POST]
+
+delete_Salle:
+    path:     /admin/deleteSalle/
+    defaults: { _controller: PronoteBundle:Admin:deleteSalle }
+    methods:  [POST]
+
+update_Salle:
+    path:     /admin/updateSalle/
+    defaults: { _controller: PronoteBundle:Admin:updateSalle }
+    methods:  [POST]
+
+###################################################################################
+
+showAllAdmins:
+    path:     /admin/showAllAdmins/
+    defaults: { _controller: PronoteBundle:Admin:showAllAdmins }
+    methods:  [POST]
+
+add_Admin:
+    path:     /admin/addAdmin/
+    defaults: { _controller: PronoteBundle:Admin:addAdmin }
+    methods:  [POST]
+
+delete_Admin:
+    path:     /admin/deleteAdmin/
+    defaults: { _controller: PronoteBundle:Admin:deleteAdmin }
+    methods:  [POST]
+
+update_Admin:
+    path:     /admin/updateAdmin/
+    defaults: { _controller: PronoteBundle:Admin:updateAdmin }
+    methods:  [POST]
+
+###################################################################################
+
+showAllMatieres:
+    path:     /admin/showAllMatieres/
+    defaults: { _controller: PronoteBundle:Admin:showAllMatieres }
+    methods:  [POST]
+
+add_Matiere:
+    path:     /admin/addMatiere/
+    defaults: { _controller: PronoteBundle:Admin:addMatiere }
+    methods:  [POST]
+
+delete_Matiere:
+    path:     /admin/deleteMatiere/
+    defaults: { _controller: PronoteBundle:Admin:deleteMatiere }
+    methods:  [POST]
+
+update_Matiere:
+    path:     /admin/updateMatiere/
+    defaults: { _controller: PronoteBundle:Admin:updateMatiere }
+    methods:  [POST]
+
+###################################################################################
+
+showAllActivitesScolaires:
+    path:     /admin/showAllActivitesScolaires/
+    defaults: { _controller: PronoteBundle:Admin:showAllActivitesScolaires }
+    methods:  [POST]
+
+add_ActiviteScolaires:
+    path:     /admin/addActiviteScolaire/
+    defaults: { _controller: PronoteBundle:Admin:addActiviteScolaire }
+    methods:  [POST]
+
+delete_ActiviteScolaires:
+    path:     /admin/deleteActiviteScolaire/
+    defaults: { _controller: PronoteBundle:Admin:deleteActiviteScolaire }
+    methods:  [POST]
+
+update_ActiviteScolaires:
+    path:     /admin/updateActiviteScolaire/
+    defaults: { _controller: PronoteBundle:Admin:updateActiviteScolaire }
+    methods:  [POST]
+
+###################################################################################
+
+showAllObservationsGenerales:
+    path:     /admin/showAllObservationsGenerales/
+    defaults: { _controller: PronoteBundle:Admin:showAllObservationsGenerales }
+    methods:  [POST]
+
+add_ObservationGenerales:
+    path:     /admin/addObservationGenerale/
+    defaults: { _controller: PronoteBundle:Admin:addObservationGenerale }
+    methods:  [POST]
+
+delete_ObservationGenerales:
+    path:     /admin/deleteObservationGenerale/
+    defaults: { _controller: PronoteBundle:Admin:deleteObservationGenerale }
+    methods:  [POST]
+
+update_ObservationGenerales:
+    path:     /admin/updateObservationGenerale/
+    defaults: { _controller: PronoteBundle:Admin:updateObservationGenerale }
+    methods:  [POST]
+
+###################################################################################
+
+showAllTelechargements:
+    path:     /admin/showAllTelechargements/
+    defaults: { _controller: PronoteBundle:Admin:showAllTelechargements }
+    methods:  [POST]
+
+add_Telechargements:
+    path:     /admin/addTelechargement/
+    defaults: { _controller: PronoteBundle:Admin:addTelechargement }
+    methods:  [POST]
+
+delete_Telechargements:
+    path:     /admin/deleteTelechargement/
+    defaults: { _controller: PronoteBundle:Admin:deleteTelechargement }
+    methods:  [POST]
+
+update_Telechargements:
+    path:     /admin/updateTelechargement/
+    defaults: { _controller: PronoteBundle:Admin:updateTelechargement }
+    methods:  [POST]
+
+###################################################################################
+
+showAllEmploisDuTemps:
+    path:     /admin/showAllEmploisDuTemps/
+    defaults: { _controller: PronoteBundle:Admin:showAllEmploisDuTemps }
+    methods:  [POST]
+
+showOneEmploiDuTemps:
+    path:     /admin/showOneEmploiDuTemps/
+    defaults: { _controller: PronoteBundle:Admin:showOneEmploiDuTemps }
+    methods:  [POST]
+
+add_EmploiDuTemps:
+    path:     /admin/addEmploiDuTemps/
+    defaults: { _controller: PronoteBundle:Admin:addEmploiDuTemps }
+    methods:  [POST]
+
+delete_EmploiDuTemps:
+    path:     /admin/deleteEmploiDuTemps/
+    defaults: { _controller: PronoteBundle:Admin:deleteEmploiDuTemps }
+    methods:  [POST]
+
+update_EmploiDuTemps:
+    path:     /admin/updateEmploiDuTemps/
+    defaults: { _controller: PronoteBundle:Admin:updateEmploiDuTemps }
+    methods:  [POST]
+
+###################################################################################
+
+showAllActivitesScolairesProfesseurs:
+    path:     /professeur/showAllActivitesScolaires/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllActivitesScolaires }
+    methods:  [POST]
+
+add_ActiviteScolairesProfesseur:
+    path:     /professeur/addActiviteScolaire/
+    defaults: { _controller: PronoteBundle:Professeurs:addActiviteScolaire }
+    methods:  [POST]
+
+delete_ActiviteScolairesProfesseur:
+    path:     /professeur/deleteActiviteScolaire/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteActiviteScolaire }
+    methods:  [POST]
+
+update_ActiviteScolairesProfesseur:
+    path:     /professeur/updateActiviteScolaire/
+    defaults: { _controller: PronoteBundle:Professeurs:updateActiviteScolaire }
+    methods:  [POST]
+
+###################################################################################
+
+showAllObservationsGeneralesProfesseurs:
+    path:     /professeur/showAllObservationsGenerales/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllObservationsGenerales }
+    methods:  [POST]
+
+add_ObservationGeneralesProfesseurs:
+    path:     /professeur/addObservationGenerale/
+    defaults: { _controller: PronoteBundle:Professeurs:addObservationGenerale }
+    methods:  [POST]
+
+delete_ObservationGeneralesProfesseurs:
+    path:     /professeur/deleteObservationGenerale/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteObservationGenerale }
+    methods:  [POST]
+
+update_ObservationGeneralesProfesseurs:
+    path:     /professeur/updateObservationGenerale/
+    defaults: { _controller: PronoteBundle:Professeurs:updateObservationGenerale }
+    methods:  [POST]
+
+###################################################################################
+
+showAllDevoirsProfesseurs:
+    path:     /professeur/showAllDevoirs/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllDevoirs }
+    methods:  [POST]
+
+add_DevoirsProfesseur:
+    path:     /professeur/addDevoir/
+    defaults: { _controller: PronoteBundle:Professeurs:addDevoir }
+    methods:  [POST]
+
+delete_DevoirsProfesseur:
+    path:     /professeur/deleteDevoir/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteDevoir }
+    methods:  [POST]
+
+update_DevoirsProfesseur:
+    path:     /professeur/updateDevoir/
+    defaults: { _controller: PronoteBundle:Professeurs:updateDevoir }
+    methods:  [POST]
+
+###################################################################################
+
+showAllAssiduites:
+    path:     /professeur/showAllAssiduites/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllAssiduites }
+    methods:  [POST]
+
+add_Assiduite:
+    path:     /professeur/addAssiduite/
+    defaults: { _controller: PronoteBundle:Professeurs:addAssiduite }
+    methods:  [POST]
+
+delete_Assiduite:
+    path:     /professeur/deleteAssiduite/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteAssiduite }
+    methods:  [POST]
+
+update_Assiduite:
+    path:     /professeur/updateAssiduite/
+    defaults: { _controller: PronoteBundle:Professeurs:updateAssiduite }
+    methods:  [POST]
+
+###################################################################################
+
+showAllNotes:
+    path:     /professeur/showAllNotes/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllNotes }
+    methods:  [POST]
+
+add_Note:
+    path:     /professeur/addNote/
+    defaults: { _controller: PronoteBundle:Professeurs:addNote }
+    methods:  [POST]
+
+delete_Note:
+    path:     /professeur/deleteNote/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteNote }
+    methods:  [POST]
+
+update_Note:
+    path:     /professeur/updateNote/
+    defaults: { _controller: PronoteBundle:Professeurs:updateNote }
+    methods:  [POST]
+
+###################################################################################
+
+update_Liste_Eleves:
+    path:     /professeur/updateListeEleves/{idClasse}
+    defaults: { _controller: PronoteBundle:Professeurs:updateListeEleves }
+    methods:  [GET]
+
+
+###################################################################################
+    
+showAllMenuCantine:
+    path:     /admin/showAllMenuCantine/
+    defaults: { _controller: PronoteBundle:Admin:showAllMenuCantine }
+    methods:  [POST]
+
+add_MenuCantine:
+    path:     /admin/addMenuCantine/
+    defaults: { _controller: PronoteBundle:Admin:addMenuCantine }
+    methods:  [POST]
+
+delete_MenuCantine:
+    path:     /admin/deleteMenuCantine/
+    defaults: { _controller: PronoteBundle:Admin:deleteMenuCantine }
+    methods:  [POST]
+
+update_MenuCantine:
+    path:     /admin/updateMenuCantine/
+    defaults: { _controller: PronoteBundle:Admin:updateMenuCantine }
+    methods:  [POST]
+
+###################################################################################
+
+showAllTelechargementsProfesseur:
+    path:     /professeur/showAllTelechargements/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllTelechargements }
+    methods:  [POST]
+
+add_TelechargementsProfesseur:
+    path:     /professeur/addTelechargement/
+    defaults: { _controller: PronoteBundle:Professeurs:addTelechargement }
+    methods:  [POST]
+
+delete_TelechargementsProfesseur:
+    path:     /professeur/deleteTelechargement/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteTelechargement }
+    methods:  [POST]
+
+update_TelechargementsProfesseur:
+    path:     /professeur/updateTelechargement/
+    defaults: { _controller: PronoteBundle:Professeurs:updateTelechargement }
+    methods:  [POST]
+
+###################################################################################
+
+showAllBulletins:
+    path:     /professeur/showAllBulletins/
+    defaults: { _controller: PronoteBundle:Professeurs:showAllBulletins }
+    methods:  [POST]
+
+add_Bulletin:
+    path:     /professeur/addBulletin/
+    defaults: { _controller: PronoteBundle:Professeurs:addBulletin }
+    methods:  [POST]
+
+delete_Bulletin:
+    path:     /professeur/deleteBulletin/
+    defaults: { _controller: PronoteBundle:Professeurs:deleteBulletin }
+    methods:  [POST]
+
+update_Bulletin:
+    path:     /professeur/updateBulletin/
+    defaults: { _controller: PronoteBundle:Professeurs:updateBulletin }
+    methods:  [POST]

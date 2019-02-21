@@ -1,0 +1,171 @@
+{%  include 'PronoteBundle:Admin:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+  
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Classe-->
+        <div class="col-sm-3" style="text-align: left;">
+            <form action="../addClasse/" method="post" name="formClasses" id="formClasses">
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Gestion des classes</label>
+                </div>
+                <div class="form-group">
+                    <label for="nomClasse"><b>Classe (*)</b></label>
+                    <input type="text" class="form-control" id="nomClasse" name="nomClasse"  required>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block" id="btnAjouter" value="Ajouter une classe" style="background-color: #189d8c;border: none;"/>
+                </div>
+
+                <input type="hidden" id="idClasse" name="idClasse" value="idClasse"/>
+
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  onclick="resetClasse();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;"/>
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;font-weight: 600;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Nom de la classe</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in allClasses %}
+                    <tr>
+                        <td style="text-align: center;background-color: #FFFFFF">
+                            <a href="#" onclick="idSuppression={{key.idClasse}}; document.getElementById('idClasseDelete').setAttribute('value',idSuppression); $('#ModaleClasse').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td>{{ key.nomClasse|capitalize }}</td>
+                        <td style="text-align: center;background-color: #FFFFFF"><a href="#" id="btnModifier" onclick="modifierClasse('{{ key.idClasse }}','{{ key.nomClasse }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-row">
+            <!--------------------------- Feêtre POP-UP la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleClasse" tabindex="-1" role="dialog" aria-labelledby="exampleModaleClasseTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="../deleteClasse/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer une classe</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                             <div class="modal-body" style="text-align:left;">
+                                Attention, vous êtes sur le point de supprimer cette classe. Les données suivantes qui lui sont liées vont être supprimées :<br><br>
+                                -Activités scolaires liées à cette classe.<br>
+                                -Évènement Agenda liés à cette classe.<br>
+                                -Menus de cantine liés à cette classe.<br>
+                                -Devoirs à faire donnés aux élèves de cette classe.<br>
+                                -Ressources pédagogiques associés à cette classe.<br>
+                                
+                                <br><br>
+                                Les éléments suivants ne seront plus affectés à cette classe :<br><br>
+                                -Les Élèves de cette classe.<br>
+                                -Assiduités liées aux élèves de cette classe.<br>
+                                -Notes liées aux élèves de cette classe.<br>
+                                -Bulletins scolaires associées aux élèves de cette classe.<br>
+                                
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idClasseDelete" name="idClasseDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider" style="background-color: red;border-color: red;">Je continu à ma responsabilité</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau Classe)-->
+<SCRIPT>
+    function modifierClasse(idClasse, nomClasse)
+    {
+        document.getElementById("idClasse").value = idClasse;
+        document.getElementById("nomClasse").value = nomClasse;
+
+        document.getElementById("btnAjouter").value = 'Modifier une classe';
+        var formulaire = document.getElementById('formClasses');
+        formulaire.setAttribute("action", "../updateClasse/");
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Classe)-->
+<SCRIPT>
+    function resetClasse()
+    {
+        document.getElementById("nomClasse").value = '';
+
+        document.getElementById("btnAjouter").value = 'Ajouter une classe';
+        var formulaire = document.getElementById('formClasses');
+        formulaire.setAttribute("action", "../addClasse/");
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Classe-->
+<SCRIPT type="text/javascript">
+    $('#ModaleClasse').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+    })
+</SCRIPT>
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "Chercher :",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+{%  include 'PronoteBundle:Admin:footer.html.twig' %}

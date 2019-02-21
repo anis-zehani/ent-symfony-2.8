@@ -1,0 +1,287 @@
+{%  include 'PronoteBundle:Professeurs:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+     
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Note-->
+        <div class="col-sm-3" style="text-align: left;" >
+        
+            <form action="{{app.request.basePath}}/professeur/addNote/" method="post" name="formNotes" id="formNotes" >
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Gestion des notes</label>
+                </div>
+            
+                <div class="form-group" onchange="resetListeEleves('-1');">
+                    <label for="inputClasseNote"><b>Classe concernée (*)</b></label>
+
+                    <select id="idClasseNote" name="idClasseNote" style="border-radius: 10px;width: 100%" required>
+                        <option value="0">Vous devez choisir une classe</option>
+                        {% for key in allClasses %}
+                            <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group" id="listeEleves">
+                    <label for="inputEleve"><b>Élève concerné (*)</b></label>
+
+
+                    <select id="idListeEleve" name="idListeEleve" style="border-radius: 10px;width: 100%" required >
+                        <option value="">Aucune classe n'a été choisie</option>
+                        {% for key in allEleves %}
+                             <!-- <option value="{{ key.idEleve }}">{{ key.prenomEleve|capitalize }} {{ key.nomEleve|capitalize }}</option>-->
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputIdMatiere" id="labelMatiere"><b>Matière (*)</b></label>
+
+                    <select id="idMatiere" name="idMatiere" style="border-radius: 10px;width: 100%" required >
+                        <option value="">Vous devez choisir une matière</option>
+                        {% for key in allMatieres %}
+                            <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group"> 
+                    <label for="inputDetailsNote" id="labelNote"><b>Note (*)</b></label>
+                    <textarea class="form-control" rows="2" id="detailsNote" name="detailsNote" required ></textarea>
+                </div>
+
+
+                
+
+                <div class="form-group">
+                    <label for="inputDateNote" id="labelDateNote"><b>Date note</b></label>
+                    <input type="date" class="form-control" id="dateNote" name="dateNote">
+                </div>
+                
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Ajouter une note" style="background-color: #189d8c;border: none;" />
+                </div>
+
+                <input type="hidden" id="idNote" name="idNote" value="idNote"/>
+
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnReset" onclick="resetNote();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;" />
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Date Note</th>
+                    <th>Détails Note</th>
+                    <th>Matière</th>
+                    <th>Élève</th>
+                    <th>Classe</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in allNotes %}
+                    <tr>
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            <a href="#" onclick="idSuppression={{key.idNote}}; document.getElementById('idNoteDelete').setAttribute('value',idSuppression); $('#ModaleNote').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.dateNote }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.detailsNote|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.nomMatiere|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.prenomEleve|capitalize }} {{ key.nomEleve|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.nomClasseEleve|capitalize }}</td>
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            {% if key.idClasseEleve > 0 %}
+                            <a href="#" id="btnModifier" onclick="modifierNote('{{ key.idNote }}','{{ key.detailsNote |replace({"'": "\\'",'\r\n': '\\r\\n', '\n': '\\n', '\r': '\\r'})}}','{{ key.dateNote |date("Y-m-d")}}','{{ key.idMatiere }}','{{ key.idClasseEleve }}','{{ key.idEleve }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a>
+                            {% else %}
+                        	<img src="{{ asset('./bootstrap/img/update-gris.jpg') }}" width="20" height="20" >
+                        	{% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+
+        <div class="form-row">
+            <!--------------------------- Fenêtre POP-UP de la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleNote" tabindex="-1" role="dialog" aria-labelledby="exampleModaleNoteTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="{{app.request.basePath}}/professeur/deleteNote/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer une note</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Attention, vous êtes sur le point de supprimer cette note.
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idNoteDelete" name="idNoteDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau Notes)-->
+<SCRIPT>
+    function modifierNote(idNote, detailsNote, dateNote , idMatiere , idClasseEleve, idEleve)
+    {
+
+        document.getElementById("idNote").value = idNote;
+        document.getElementById("detailsNote").value = detailsNote;
+        document.getElementById("dateNote").value = dateNote;
+        document.getElementById("idMatiere").value = idMatiere;
+        document.getElementById("idClasseNote").value = idClasseEleve;
+
+      	//Important : passage de ID élève afin de faire appel Ajax en prenant en compte le boutton 'Modifier'
+        resetListeEleves(idEleve);
+
+        document.getElementById("btnAjouter").value = 'Modifier une note';
+        var formulaire = document.getElementById('formNotes');
+        formulaire.setAttribute("action", "{{app.request.basePath}}/professeur/updateNote/");
+        
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Notes)-->
+<SCRIPT>
+    function resetNote()
+    {
+
+        document.getElementById("idNote").value = '';
+        document.getElementById("detailsNote").value = '';
+        document.getElementById("dateNote").value = '';
+        document.getElementById("idMatiere").value = '';
+        document.getElementById("idClasseNote").value = '';
+        //On vide la liste des élèves
+        document.getElementById("idListeEleve").options.length = 0;
+
+        
+        document.getElementById("btnAjouter").value = 'Ajouter une note';
+        var formulaire = document.getElementById('formNotes');
+        formulaire.setAttribute("action", "{{app.request.basePath}}/professeur/addNote/");
+        
+    }
+</SCRIPT>
+
+<!-- OnChange Liste des classes-->
+<SCRIPT>
+    function resetListeEleves(idEleve)
+    {
+    	
+        var idClasse = document.getElementById("idClasseNote").value;
+
+        $.ajax({
+            url : '{{app.request.basePath}}/professeur/updateListeEleves/'+idClasse,
+            type : 'GET',
+            dataType : 'html',
+            success : function(data, statut){
+
+                var json = $.parseJSON(data);
+                //console.log(json);
+
+                var oOption,
+                    oSelect = document.getElementById("idListeEleve"),
+                    i, 
+                    nb = json.length;
+
+                // vide le select
+                oSelect.options.length = 0;
+                // désactive si aucune option disponible
+                oSelect.disabled = nb ? false : true;
+                oSelect.add( new Option( 'Cette classe ne contient aucun élève', ''));
+                // focus sur le select
+                oSelect.focus();
+
+             	// ajoute 1st option
+                if(nb && idEleve == '-1')
+                {
+                    oSelect.options.length = 0;
+                    oSelect.add( new Option( 'Merci de préciser un élève', ''));
+                    oSelect.focus();
+                }
+
+             	//Trouver le élève sélectionné par le boutton 'Modifier' et le mettre dans la liste déroulante
+                if(idEleve != '-1')
+                {
+                	console.log(idEleve);
+                	console.log(json);
+                	oSelect.options.length = 0;
+                	
+                	for (var j=0;j<json.length;++j)
+                    {
+                        if(json[j].idEnfant == idEleve)
+                            {
+                        	oSelect.add( new Option(json[j].prenomEnfant.charAt(0).toUpperCase()+json[j].prenomEnfant.slice(1)+' '+json[j].nomEnfant.charAt(0).toUpperCase()+json[j].nomEnfant.slice(1), json[j].idEnfant));
+                            oSelect.focus();
+                            }
+                    }
+
+                }
+
+				//Ajouter tous les autres élèves juste aprés celui qui a été sélectionné via le boutton 'Modifier'
+                for (var i=0;i<json.length;++i)
+                {
+                	if(json[i].idEnfant != idEleve)
+                    	{
+                        oOption = new Option(json[i].prenomEnfant.charAt(0).toUpperCase()+json[i].prenomEnfant.slice(1)+' '+json[i].nomEnfant.charAt(0).toUpperCase()+json[i].nomEnfant.slice(1), json[i].idEnfant);
+                        oSelect.add( oOption);
+                    	}
+                }
+
+                // si une seule option on la sélectionne
+                oSelect.selectedIndex = nb === 1 ? 1 : 0;
+                // on retourne la valeur pour le select suivant
+                return oSelect.value;
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log(statut);
+                console.log(erreur);
+                console.log(resultat);
+                
+            }
+        });
+
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Notes-->
+<SCRIPT type="text/javascript">
+    $('#ModaleNote').on('shown.bs.modal', function () {
+        
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+    })
+</SCRIPT>
+
+{%  include 'PronoteBundle:Professeurs:footer.html.twig' %}

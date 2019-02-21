@@ -1,0 +1,545 @@
+<form>
+
+    <input type="hidden" id="idClasseAjout" name="idClasseAjout" value="Aucune classe choisie" />
+    <input type="hidden" id="idSalleAjout" name="idSalleAjout" value="Aucune salle choisie" />
+    <input type="hidden" id="idDesignation" name="idDesignation" value="Aucune désignation choisie" />
+
+
+    <table class="table table-striped table-bordered" cellspacing="0" width="100%" style="overflow-x: scroll ;overflow-y: scroll ;">
+        <thead>
+        <tr>
+            <th>Horaires</th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td style="font-size: 13px;">8 - 9</td>
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_1" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_1" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_1" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_1" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_1" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">9 - 10</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_2" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_2" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_2" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_2" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_2" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">10 - 11</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_3" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_3" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_3" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_3" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_3" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">11 - 12</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_4" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_4" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_4" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_4" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_4" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">12 - 13</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_5" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_5" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_5" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_5" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_5" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">13 - 14</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_6" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_6" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_6" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_6" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_6" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">14 - 15</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_7" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_7" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_7" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_7" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_7" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">15 - 16</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_8" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_8" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_8" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_8" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_8" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">16 - 17</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_9" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_9" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_9" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_9" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_9" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td style="font-size: 13px;">17 - 18</td>
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_1_10" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_2_10" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_3_10" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_4_10" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+
+            <td style="background-color:white;font-size: 13px;">
+                <select name="idMatiere_5_10" style="border-radius: 10px;width: 100%">
+                    <option value="0"></option>
+                    {% for key in allMatieres %}
+                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</form>

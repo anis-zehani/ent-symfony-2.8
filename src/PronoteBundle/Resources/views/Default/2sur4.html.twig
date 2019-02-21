@@ -1,0 +1,67 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;border-radius: 25px;">
+        <thead>
+        <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #9cd100;border: none; color: #FFFFFF;">
+        	<form action="{{app.request.basePath}}/notes/" method="post">
+                  <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                  {% if pageData4 |length > 0 %}
+         			  	  <input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        		  {% endif %}
+                  <input type="submit" value="DERNIÈRES NOTES DU MOIS" style="color:white;background-color:#9cd100;border:0;cursor: pointer;">
+            </form> 
+        </div>
+        
+        </thead>
+        
+         <tbody>
+        
+        {% for key in pageData4 %}
+        
+            {% if key.messagePasDeNotes is defined %}
+                
+    			<tr>
+                    <td style="background-color: #fff;padding: .15rem; vertical-align: middle;-color: #ed494c;font-weight:600;text-align: justify;">{{ key.messagePasDeNotes }}</td>
+                </tr>
+				
+    		{% else %}
+
+                <tr>
+                    {% if key.note > 9.99 %}
+                        <td scope="row" style="width:40%; color: #000000;vertical-align:middle;font-weight:600;">{{ key.nomMatiere |capitalize}}</td>
+                        <td style="background-color: #fff;padding: .15rem; vertical-align: middle;color: #775ca1;">{{ key.note }}<br>({{ key.dateNote }})</td>
+                    {% else %}
+                        <td scope="row" style="width:40%; color: #000000;vertical-align:middle;font-weight:600;">{{ key.nomMatiere |capitalize}}</td>
+                        <td style="background-color: #fff;padding: .15rem; vertical-align: middle;color: #ed494c;font-weight:600;">{{ key.note }}<br>({{ key.dateNote }})</td>
+                    {% endif %}
+                </tr>
+                
+            {% endif %}
+   
+        {% endfor %}
+        
+
+ 		</tbody>
+ 		
+    </table>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;">
+        <thead>
+ 
+       	<div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #9cd100;border: none; color: #FFFFFF;">BULLETIN DES NOTES</div>
+        </thead>
+        <tbody>
+        {% for key in pageData13 %}
+            <tr>
+                <td style="padding: .15rem; vertical-align: middle;background-color: #FFFFFF;font-weight:bold;text-align: justify;">{{ key.descriptionBulletin |capitalize}}</td>
+                {% if key.pathBulletin|length > 0 %}
+                    <td style="padding: .15rem; vertical-align: middle;background-color: #FFFFFF;"><a href="{{app.request.basePath}}/{{ key.pathBulletin }}" style="color:#775ca1">Télécharger</a></td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+

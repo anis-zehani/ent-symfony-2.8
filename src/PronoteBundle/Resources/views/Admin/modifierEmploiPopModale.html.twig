@@ -1,0 +1,1237 @@
+{%  include 'PronoteBundle:Admin:header.html.twig' %}
+
+<div class="container-fluid " style="padding-top: 10%; height:88%; background-color: #ffffff; overflow-y: scroll ; text-align: left" >
+    
+    <form action="{{app.request.basePath}}/admin/updateEmploiDuTemps/" method="post">
+        <div class="row align-items-start">
+
+            <div class="col-sm-3" >
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Modifier un emploi  du temps</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDesignation">Désignation de l'emploi (*)</label>
+                    <input type="texte" class="form-control" id="idDesignation" name="idDesignation" value="{{ allEmplois.designation }}" placeholder="Désignation Emploi" required >
+                </div>
+
+                <div class="form-group">
+                    <label for="inputClasseEmploiDuTemps">Veuillez choisir une classe (*)</label><br>
+
+                    <select id="classeEmploiDuTemps" name="classeEmploiDuTemps" style="border-radius: 10px;width: 100%" required>
+
+                        {% if classeAndSalle is defined %}
+                            <option value="{{ classeAndSalle.idClasse }}">{{ classeAndSalle.nomClasse|capitalize }}</option>
+                        {% endif %}
+						
+                        {% for key in allClasses %}
+                            <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                        {% endfor %}
+                        <option value="0">Aucune Classe</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputSalleEmploiDuTemps">Veuillez choisir une salle (*)</label><br>
+
+                    <select id="salleEmploiDuTemps" name="salleEmploiDuTemps" style="border-radius: 10px;width: 100%" required>
+
+
+                        {% if classeAndSalle is defined %}
+                            <option value="{{ classeAndSalle.idSalle }}">{{ classeAndSalle.nomSalle|capitalize }}</option>
+                        {% endif %}
+						
+                        {% for key in allSalles %}
+                        	{% if classeAndSalle is defined and key.idSalle != classeAndSalle.idSalle %}
+                           		 <option value="{{ key.idSalle }}">{{ key.nomSalle|capitalize }}</option>
+                            {% endif %}
+                        {% endfor %}
+                        <option value="0">Aucune Salle</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  value="Sauvegarder" style="background-color: #189d8c;border: none;"/>
+
+					<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+
+                    {% for flashMessage in app.session.flashbag.get('Exception') %}
+                        <h6 style="color: #e3352c;" id="Exception">{{ flashMessage }}</h6>
+                    {% endfor %}
+                </div>
+                {% if idEmploi is defined %}
+                    <input type="hidden" id="idEmploiDuTemps" name="idEmploiDuTemps" value="{{ idEmploi }}"/>
+                {% endif %}
+
+
+            </div>
+            <div class="col-sm-9" >
+
+
+
+
+                <table  class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                    <thead>
+                    <tr>
+                        <th>Horaires</th>
+                        <th>Lundi</th>
+                        <th>Mardi</th>
+                        <th>Mercredi</th>
+                        <th>Jeudi</th>
+                        <th>Vendredi</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td style="font-size: 13px;">8 - 9</td>
+                        {% if allEmplois.seance_1_1 is not empty %}
+                            {% set foo = allEmplois.seance_1_1 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_1" name="listeEnfants_1_1" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_1" name="listeEnfants_1_1" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_1 is not empty %}
+                            {% set foo = allEmplois.seance_2_1 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_1" name="listeEnfants_2_1" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_1" name="listeEnfants_2_1" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_1 is not empty %}
+                            {% set foo = allEmplois.seance_3_1 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_1" name="listeEnfants_3_1" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_1" name="listeEnfants_3_1" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_1 is not empty %}
+                            {% set foo = allEmplois.seance_4_1 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_1" name="listeEnfants_4_1" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_1" name="listeEnfants_4_1" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_1 is not empty %}
+                            {% set foo = allEmplois.seance_5_1 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_1" name="listeEnfants_5_1" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_1" name="listeEnfants_5_1" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">9 - 10</td>
+                        {% if allEmplois.seance_1_2 is not empty %}
+                            {% set foo = allEmplois.seance_1_2 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_2" name="listeEnfants_1_2" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_2" name="listeEnfants_1_2" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_2 is not empty %}
+                            {% set foo = allEmplois.seance_2_2 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_2" name="listeEnfants_2_2" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_2" name="listeEnfants_2_2" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_2 is not empty %}
+                            {% set foo = allEmplois.seance_3_2 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_2" name="listeEnfants_3_2" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_2" name="listeEnfants_3_2" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_2 is not empty %}
+                            {% set foo = allEmplois.seance_4_2 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_2" name="listeEnfants_4_2" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_2" name="listeEnfants_4_2" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_2 is not empty %}
+                            {% set foo = allEmplois.seance_5_2 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_2" name="listeEnfants_5_2" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_2" name="listeEnfants_5_2" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">10 - 11</td>
+                        {% if allEmplois.seance_1_3 is not empty %}
+                            {% set foo = allEmplois.seance_1_3 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_3" name="listeEnfants_1_3" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_3" name="listeEnfants_1_3" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_3 is not empty %}
+                            {% set foo = allEmplois.seance_2_3 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_3" name="listeEnfants_2_3" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_3" name="listeEnfants_2_3" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_3 is not empty %}
+                            {% set foo = allEmplois.seance_3_3 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_3" name="listeEnfants_3_3" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_3" name="listeEnfants_3_3" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_3 is not empty %}
+                            {% set foo = allEmplois.seance_4_3 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_3" name="listeEnfants_4_3" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_3" name="listeEnfants_4_3" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_3 is not empty %}
+                            {% set foo = allEmplois.seance_5_3 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_3" name="listeEnfants_5_3" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_3" name="listeEnfants_5_3" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">11 - 12</td>
+                        {% if allEmplois.seance_1_4 is not empty %}
+                            {% set foo = allEmplois.seance_1_4 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_4" name="listeEnfants_1_4" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_4" name="listeEnfants_1_4" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_4 is not empty %}
+                            {% set foo = allEmplois.seance_2_4 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_4" name="listeEnfants_2_4" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_4" name="listeEnfants_2_4" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_4 is not empty %}
+                            {% set foo = allEmplois.seance_3_4 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_4" name="listeEnfants_3_4" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_4" name="listeEnfants_3_4" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_4 is not empty %}
+                            {% set foo = allEmplois.seance_4_4 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_4" name="listeEnfants_4_4" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_4" name="listeEnfants_4_4" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_4 is not empty %}
+                            {% set foo = allEmplois.seance_5_4 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_4" name="listeEnfants_5_4" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_4" name="listeEnfants_5_4" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">12 - 13</td>
+                        {% if allEmplois.seance_1_5 is not empty %}
+                            {% set foo = allEmplois.seance_1_5 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_5" name="listeEnfants_1_5" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_5" name="listeEnfants_1_5" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_5 is not empty %}
+                            {% set foo = allEmplois.seance_2_5 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_5" name="listeEnfants_2_5" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_5" name="listeEnfants_2_5" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_5 is not empty %}
+                            {% set foo = allEmplois.seance_3_5 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_5" name="listeEnfants_3_5" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_5" name="listeEnfants_3_5" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_5 is not empty %}
+                            {% set foo = allEmplois.seance_4_5 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_5" name="listeEnfants_4_5" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_5" name="listeEnfants_4_5" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_5 is not empty %}
+                            {% set foo = allEmplois.seance_5_5 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_5" name="listeEnfants_5_5" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_5" name="listeEnfants_5_5" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">13 - 14</td>
+                        {% if allEmplois.seance_1_6 is not empty %}
+                            {% set foo = allEmplois.seance_1_6 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_6" name="listeEnfants_1_6" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_6" name="listeEnfants_1_6" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_6 is not empty %}
+                            {% set foo = allEmplois.seance_2_6 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_6" name="listeEnfants_2_6" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_6" name="listeEnfants_2_6" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_6 is not empty %}
+                            {% set foo = allEmplois.seance_3_6 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_6" name="listeEnfants_3_6" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_6" name="listeEnfants_3_6" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_6 is not empty %}
+                            {% set foo = allEmplois.seance_4_6 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_6" name="listeEnfants_4_6" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_6" name="listeEnfants_4_6" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_6 is not empty %}
+                            {% set foo = allEmplois.seance_5_6 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_6" name="listeEnfants_5_6" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_6" name="listeEnfants_5_6" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">14 - 15</td>
+                        {% if allEmplois.seance_1_7 is not empty %}
+                            {% set foo = allEmplois.seance_1_7 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_7" name="listeEnfants_1_7" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_7" name="listeEnfants_1_7" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_7 is not empty %}
+                            {% set foo = allEmplois.seance_2_7 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_7" name="listeEnfants_2_7" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_7" name="listeEnfants_2_7" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_7 is not empty %}
+                            {% set foo = allEmplois.seance_3_7 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_7" name="listeEnfants_3_7" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_7" name="listeEnfants_3_7" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_7 is not empty %}
+                            {% set foo = allEmplois.seance_4_7 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_7" name="listeEnfants_4_7" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_7" name="listeEnfants_4_7" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_7 is not empty %}
+                            {% set foo = allEmplois.seance_5_7 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_7" name="listeEnfants_5_7" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_7" name="listeEnfants_5_7" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">15 - 16</td>
+                        {% if allEmplois.seance_1_8 is not empty %}
+                            {% set foo = allEmplois.seance_1_8 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_8" name="listeEnfants_1_8" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_8" name="listeEnfants_1_8" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_8 is not empty %}
+                            {% set foo = allEmplois.seance_2_8 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_8" name="listeEnfants_2_8" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_8" name="listeEnfants_2_8" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_8 is not empty %}
+                            {% set foo = allEmplois.seance_3_8 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_8" name="listeEnfants_3_8" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_8" name="listeEnfants_3_8" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_8 is not empty %}
+                            {% set foo = allEmplois.seance_4_8 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_8" name="listeEnfants_4_8" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_8" name="listeEnfants_4_8" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_8 is not empty %}
+                            {% set foo = allEmplois.seance_5_8 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_8" name="listeEnfants_5_8" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_8" name="listeEnfants_5_8" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">16 - 17</td>
+                        {% if allEmplois.seance_1_9 is not empty %}
+                            {% set foo = allEmplois.seance_1_9 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_9" name="listeEnfants_1_9" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_9" name="listeEnfants_1_9" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_9 is not empty %}
+                            {% set foo = allEmplois.seance_2_9 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_9" name="listeEnfants_2_9" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_9" name="listeEnfants_2_9" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_9 is not empty %}
+                            {% set foo = allEmplois.seance_3_9 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_9" name="listeEnfants_3_9" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_9" name="listeEnfants_3_9" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_9 is not empty %}
+                            {% set foo = allEmplois.seance_4_9 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_9" name="listeEnfants_4_9" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_9" name="listeEnfants_4_9" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_9 is not empty %}
+                            {% set foo = allEmplois.seance_5_9 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_9" name="listeEnfants_5_9" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_9" name="listeEnfants_5_9" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td style="font-size: 13px;">17 - 18</td>
+                        {% if allEmplois.seance_1_10 is not empty %}
+                            {% set foo = allEmplois.seance_1_10 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_10" name="listeEnfants_1_10" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_1_10" name="listeEnfants_1_10" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_2_10 is not empty %}
+                            {% set foo = allEmplois.seance_2_10 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_10" name="listeEnfants_2_10" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_2_10" name="listeEnfants_2_10" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_3_10 is not empty %}
+                            {% set foo = allEmplois.seance_3_10 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_10" name="listeEnfants_3_10" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_3_10" name="listeEnfants_3_10" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                        {% if allEmplois.seance_4_10 is not empty %}
+                            {% set foo = allEmplois.seance_4_10 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_10" name="listeEnfants_4_10" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_4_10" name="listeEnfants_4_10" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+
+                        {% if allEmplois.seance_5_10 is not empty %}
+                            {% set foo = allEmplois.seance_5_10 |split('@@') %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_10" name="listeEnfants_5_10" style="border-radius: 10px;width: 100%">
+                                    <option value="{{ foo[2] }}">{{ foo[0] }}</option><option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </td>
+                        {% else %}
+                            <td style="background-color:white;font-size: 13px;">
+                                <select id="listeEnfants_5_10" name="listeEnfants_5_10" style="border-radius: 10px;width: 100%">
+                                    <option value="0"></option>
+                                    {% for key in allMatieres %}
+                                        <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        {% endif %}
+
+                    </tr>
+                    </tbody>
+
+                </table>
+
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+{%  include 'PronoteBundle:Admin:footer.html.twig' %}

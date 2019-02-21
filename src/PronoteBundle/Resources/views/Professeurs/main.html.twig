@@ -1,0 +1,93 @@
+{%  include 'PronoteBundle:Professeurs:header.html.twig' %}
+
+<div class="container-fluid" style="background-color: #ffffff;height: 88%;" >
+
+	<tr><br><br></tr>
+    <div class="row align-items-start" style="padding-top: 5%;font-size:13px;">
+
+   		<div class="col-sm-2" style="text-align: center;">
+			
+        </div>
+        
+        
+        <div class="col-sm-2" style="text-align: center;">
+
+            
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllAssiduites/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-assiduites-prof.jpg') }}" type="image" width="100%" height="100%">
+                    </form>
+                </div>
+            </tr>
+            <tr><br></tr>
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllTelechargements/" method="post">
+                          <input src="{{ asset('bootstrap/img/Gestion-des-ressources-pedagogiques-prof.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+        </div>
+        
+        <div class="col-sm-1" style="text-align: center;">
+			
+        </div>
+        
+        <div class="col-sm-2" style="text-align: center;">
+        
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllDevoirs/" method="post">
+                          <input src="{{ asset('bootstrap/img/Gestion-des-devoirs.jpg') }}" type="image" width="100%" height="100%">
+                    </form>
+                </div>
+            </tr>
+            <tr><br></tr>
+
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllBulletins/" method="post">
+                          <input src="{{ asset('bootstrap/img/Gestion-bulletins-scolaires.jpg') }}" type="image" width="100%" height="100%">
+                    </form>
+                </div>
+            </tr>
+            <tr><br></tr>
+
+        </div>
+        
+         <div class="col-sm-1" style="text-align: center;">
+			
+        </div>
+        
+        <div class="col-sm-2" style="text-align: center;">
+        
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllNotes/" method="post">
+                          <input src="{{ asset('bootstrap/img/Gestion-des-notes.jpg') }}" type="image" width="100%" height="100%">
+                    </form>      
+                </div>
+            </tr>
+            <tr><br></tr>
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllActivitesScolaires/" method="post">
+                          <input src="{{ asset('bootstrap/img/Gestion-des-activites-scolaires-prof.jpg') }}" type="image" width="100%" height="100%">
+                    </form>
+                </div>
+            </tr>
+            <tr><br></tr>
+
+        </div>
+        
+         <div class="col-sm-2" style="text-align: center;">
+			
+         </div>
+
+    </div>
+    <tr><br><br></tr>
+</div>
+
+{%  include 'PronoteBundle:Professeurs:footer.html.twig' %}

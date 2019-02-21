@@ -1,0 +1,191 @@
+
+<div class="container-fluid fixed-bottom text-center" style="height:4ch;background-color: #45a6bf; color:#ffffff;font-size:15px;font-weight: 300;">
+    <div class="row">
+        <div class="col-6" style="text-align: left;">
+            E.N.T {{ "now"|date("Y")}} / {{ "now"|date("Y")+1}}
+        </div>
+        <div class="col-6" style="text-align: right;">
+            <a href="https://smartgraphe.com/" target="_blank" style="text-decoration:none;color:white;">www.smartgraphe.com&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>  
+<script src={{ asset('bootstrap/js/jquery.redirect.js') }}></script>	
+
+<!-- Imports JS de la DATATABLE-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- SESSION TIMEOUT -->	
+<script src={{ asset('bootstrap/js/bootstrap.min.js') }}></script>
+<script src={{ asset('bootstrap/js/jquery.userTimeout.js') }}></script>	
+
+   
+<SCRIPT>  
+function post(path, params, method) {
+    method = method || "post"; // Set method to post by default if not specified.
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</SCRIPT>
+
+
+<SCRIPT>
+    function RefreshData(selTag)
+    {
+        
+        var i = document.getElementById("listeEnfants");
+
+        var idEleve = i.value.split("-", 2)['0'];
+        var idClasse = i.value.split("-", 2)['1'];
+        
+        //console.log(idEleve);
+        //console.log(idClasse);
+        
+        if (i == 0) return;
+        
+        {% if '/accueil/' in app.request.pathinfo or '/login/' in app.request.pathinfo%}
+
+    		post('{{app.request.basePath}}/accueil/', {idParent: '{{pageData1.idParent }}', idEleve: idEleve});
+
+        {% elseif '/emploi/' in app.request.pathinfo %}
+    
+    		post('{{app.request.basePath}}/emploi/', {idParent: '{{pageData1.idParent }}', idClasse: idClasse, idEleve: idEleve});
+      
+        {% elseif '/notes/' in app.request.pathinfo %}
+        	
+        	post('{{app.request.basePath}}/notes/', {idParent: '{{pageData1.idParent }}', idEleve: idEleve});
+        
+        {% elseif '/travailafaire/' in app.request.pathinfo %}
+        
+    		post('{{app.request.basePath}}/travailafaire/', {idParent: '{{pageData1.idParent }}', idClasse: idClasse, idEleve: idEleve});
+    
+        {% elseif '/assiduite/' in app.request.pathinfo %}
+        	
+        	post('{{app.request.basePath}}/assiduite/', {idParent: '{{pageData1.idParent }}', idEleve: idEleve});
+    
+        {% endif %}           
+    }
+</SCRIPT>
+
+<SCRIPT>
+	//Désactive une notification pour un élève
+    function deactivateNotification(idNotification, lienNotification, idParent, idEleve)
+    {
+
+        /*console.log("idNotification = "+idNotification);
+        console.log("lienNotification = "+lienNotification);
+        console.log("idParent = "+idParent);
+        console.log("idEleve = "+idEleve);*/
+
+    	var xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function()
+        	{
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                
+                url="{{app.request.basePath}}/" + lienNotification+"/";
+            	
+            	$.redirect(url,
+                {
+            		idParent: idParent,
+					idEleve : idEleve
+                });
+
+            }
+        }
+
+		xmlhttp.open('POST', '{{app.request.basePath}}/deactivateNotification/', true);
+        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xmlhttp.send('idNotification='+idNotification);
+        
+
+    }
+
+</SCRIPT>
+
+<SCRIPT>
+	//Désactive une notification pour une classe
+    function deactivateNotificationClasse(idNotificationClasse, lienNotification, idParent, idClasse, idEleve)
+    {
+    	/*console.log("idNotificationClasse = "+idNotificationClasse);
+        console.log("lienNotification = "+lienNotification);
+        console.log("idParent = "+idParent);
+        console.log("idClasse = "+idClasse);
+        console.log("idEleve = "+idEleve);*/
+
+    	var xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function()
+        	{
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                
+                url="{{app.request.basePath}}/" + lienNotification;
+                
+                if (lienNotification.length > 0)
+                    {
+            			$.redirect(url,
+            	                {
+            						idParent: idParent,
+            						idClasse : idClasse,
+            						idEleve : idEleve
+            	                });
+                	}
+                else
+                    {
+                		location.reload();
+                    }
+            	
+            }
+        }
+
+        xmlhttp.open('POST', '{{app.request.basePath}}/deactivateNotificationClasse/', true);
+        xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xmlhttp.send('idNotificationClasse='+idNotificationClasse);
+
+    }
+
+</SCRIPT>
+
+<!-- SESSION TIMEOUT 
+https://www.jqueryscript.net/other/Session-Timeout-Alert-Plugin-With-jQuery-userTimeout.html
+-->
+<script>
+    $(document).ready(function(){
+        $(document).userTimeout({
+            logouturl: '{{app.request.basePath}}/exitParentSession/',   
+            modalTitle: '',
+            modalBody: 'Votre Session va expirer dans 60 secondes',
+            modalLogOffBtn: 'Quitter',
+            modalStayLoggedBtn: 'Je comprend',
+            timer: true, 
+            force: 60000,    //1 minute
+            session: 1800000  //30 minutes
+        });
+    });
+</script>
+
+
+</body>
+</html>

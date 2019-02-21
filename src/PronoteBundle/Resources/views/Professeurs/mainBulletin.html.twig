@@ -1,0 +1,282 @@
+{%  include 'PronoteBundle:Professeurs:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+     
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Bulletin-->
+        <div class="col-sm-3" style="text-align: left;" >
+        
+            <form action="{{app.request.basePath}}/professeur/addBulletin/" method="post" name="formBulletins" id="formBulletins" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Bulletins scolaires</label>
+                </div>
+                
+                
+                <div class="form-group" onchange="resetListeEleves('-1');">
+                    <label for="inputClasseBulletin"><b>Classe concernée (*)</b></label>
+
+                    <select id="idClasseBulletin" name="idClasseBulletin" style="border-radius: 10px;width: 100%" required>
+                        <option value="0">Vous devez choisir une classe</option>
+                        {% for key in allClasses %}
+                            <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEleve"><b>Élève concerné (*)</b></label>
+
+                    <select id="idListeEleve" name="idListeEleve" style="border-radius: 10px;width: 100%" required>
+                        <option value="0">Aucune classe n'a été choisie</option>
+                        {% for key in allEleves %}
+                           	<!-- <option value="{{ key.idEleve }}">{{ key.prenomEleve|capitalize }} {{ key.nomEleve|capitalize }}</option>-->
+                        {% endfor %}
+                    </select>
+                </div>
+                
+
+                <div class="form-group"> 
+                    <label for="inputLabelBulletin" id="labelBulletin"><b>Détails (*)</b></label>
+                    <textarea class="form-control" rows="2" id="descriptionBulletin" name="descriptionBulletin" required></textarea>
+                </div>
+                
+               
+                <div class="form-group">
+                    <label for="inputPathTelechargement" id="inputPathTelechargement"><b>Choisir le bulletin (*) (taille < 8 Mo)</b></label>
+                    <input class="form-control" type="file" name="fileBulletin" id="fileBulletin" required >
+                </div>
+
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Ajouter un bulletin" style="background-color: #189d8c;border: none;" />
+                </div>
+
+                <input type="hidden" id="idBulletin" name="idBulletin" value="idBulletin"/>
+
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnReset" onclick="resetBulletin();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;" />
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Date</th>
+                    <th>Élève</th>
+                    <th>Classe</th>
+                    <th>Détails</th>
+                    <th>Consulter</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in allBulletin %}
+                    <tr>
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            <a href="#" onclick="idSuppression={{key.idBulletin}}; document.getElementById('idBulletinDelete').setAttribute('value',idSuppression); $('#ModaleBulletin').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.dateBulletin }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.prenomeleveBulletin|capitalize }} {{ key.nomeleveBulletin|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.nomclasseBulletin|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.descriptionBulletin|capitalize }}</td>
+                        <td style="-padding: .15rem; vertical-align: center;background-color: #FFFFFF;text-align: center;"><a href="{{app.request.basePath}}/{{key.fileBulletin}}">Afficher</a></td>
+                        
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            {% if key.classeBulletin > 0 %}
+                            <a href="#" id="btnModifier" onclick="modifierBulletin('{{ key.idBulletin }}','{{ key.descriptionBulletin |replace({"'": "\\'",'\r\n': '\\r\\n', '\n': '\\n', '\r': '\\r'})}}','{{ key.dateBulletin |date("Y-m-d")}}','{{ key.classeBulletin }}','{{ key.eleveBulletin }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a>
+                        	{% else %}
+                        	<img src="{{ asset('./bootstrap/img/update-gris.jpg') }}" width="20" height="20" >
+                        	{% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+
+        <div class="form-row">
+            <!--------------------------- Fenêtre POP-UP de la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleBulletin" tabindex="-1" role="dialog" aria-labelledby="exampleModaleBulletinTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="{{app.request.basePath}}/professeur/deleteBulletin/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer un bulletin scolaire</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Attention, vous êtes sur le point de supprimer ce bulletin.
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idBulletinDelete" name="idBulletinDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icone Modifier (dans le tableau Bulletins)-->
+<SCRIPT>
+    function modifierBulletin(idBulletin, descriptionBulletin, dateBulletin , idClasseBulletin, idEleve)
+    {
+    	//resetListeEleves()
+        document.getElementById("idBulletin").value = idBulletin;
+        document.getElementById("descriptionBulletin").value = descriptionBulletin;
+        document.getElementById("idClasseBulletin").value = idClasseBulletin;
+
+		//////////////////////
+        //document.getElementById("idListeEleve").value = idEleve;
+        //console.log(idEleve);
+
+        document.getElementById("inputPathTelechargement").innerHTML = "Choisir le bulletin (taille < 8 Mo)";
+        document.getElementById("fileBulletin").disabled = true;
+
+        //Important : passage de ID élève afin de faire appel Ajax en prenant en compte le boutton 'Modifier'
+        resetListeEleves(idEleve);
+        
+        document.getElementById("btnAjouter").value = 'Modifier un bulletin';
+        var formulaire = document.getElementById('formBulletins');
+        formulaire.setAttribute("action", "{{app.request.basePath}}/professeur/updateBulletin/");
+        
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Bulletins)-->
+<SCRIPT>
+    function resetBulletin()
+    {
+
+        document.getElementById("idBulletin").value = '';
+        document.getElementById("descriptionBulletin").value = '';
+        document.getElementById("idClasseBulletin").value = '';
+        //On vide la liste des élèves
+        document.getElementById("idListeEleve").options.length = 0;
+
+        document.getElementById("inputPathTelechargement").innerHTML = "Choisir le bulletin (*) (taille < 8 Mo)";
+        document.getElementById("fileBulletin").disabled = false;
+
+
+        document.getElementById("btnAjouter").value = 'Ajouter un bulletin';
+        var formulaire = document.getElementById('formBulletins');
+        formulaire.setAttribute("action", "{{app.request.basePath}}/professeur/addBulletin/");
+       
+    }
+</SCRIPT>
+<!-- OnChange Liste des classes-->
+<SCRIPT>
+    function resetListeEleves(idEleve)
+    {
+    	
+        var idClasse = document.getElementById("idClasseBulletin").value;
+
+        $.ajax({
+            url : '{{app.request.basePath}}/professeur/updateListeEleves/'+idClasse,
+            type : 'GET',
+            dataType : 'html',
+            success : function(data, statut){
+
+                var json = $.parseJSON(data);
+                //console.log(json);
+
+                var oOption,
+                    oSelect = document.getElementById("idListeEleve"),
+                    i, 
+                    nb = json.length;
+
+                // vide le select
+                oSelect.options.length = 0;
+                // désactive si aucune option disponible
+                oSelect.disabled = nb ? false : true;
+                oSelect.add( new Option( 'Cette classe ne contient aucun élève', ''));
+                // focus sur le select
+                oSelect.focus();
+
+             	// ajoute 1st option
+                if(nb && idEleve == '-1')
+                {
+                    oSelect.options.length = 0;
+                    oSelect.add( new Option( 'Merci de préciser un élève', ''));
+                    oSelect.focus();
+                }
+
+             	//Trouver le élève sélectionné par le boutton 'Modifier' et le mettre dans la liste déroulante
+                if(idEleve != '-1')
+                {
+                	console.log(idEleve);
+                	console.log(json);
+                	oSelect.options.length = 0;
+                	
+                	for (var j=0;j<json.length;++j)
+                    {
+                        if(json[j].idEnfant == idEleve)
+                            {
+                        	oSelect.add( new Option(json[j].prenomEnfant.charAt(0).toUpperCase()+json[j].prenomEnfant.slice(1)+' '+json[j].nomEnfant.charAt(0).toUpperCase()+json[j].nomEnfant.slice(1), json[j].idEnfant));
+                            oSelect.focus();
+                            }
+                    }
+
+                }
+
+				//Ajouter tous les autres élèves juste aprés celui qui a été sélectionné via le boutton 'Modifier'
+                for (var i=0;i<json.length;++i)
+                {
+                	if(json[i].idEnfant != idEleve)
+                    	{
+                        oOption = new Option(json[i].prenomEnfant.charAt(0).toUpperCase()+json[i].prenomEnfant.slice(1)+' '+json[i].nomEnfant.charAt(0).toUpperCase()+json[i].nomEnfant.slice(1), json[i].idEnfant);
+                        oSelect.add( oOption);
+                    	}
+                }
+
+                // si une seule option on la sélectionne
+                oSelect.selectedIndex = nb === 1 ? 1 : 0;
+                // on retourne la valeur pour le select suivant
+                return oSelect.value;
+            },
+
+            error : function(resultat, statut, erreur){
+                console.log(statut);
+                console.log(erreur);
+                console.log(resultat);
+                
+            }
+        });
+
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Bulletins-->
+<SCRIPT type="text/javascript">
+    $('#ModaleBulletin').on('shown.bs.modal', function () {
+        
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+
+    })
+</SCRIPT>
+
+
+{%  include 'PronoteBundle:Professeurs:footer.html.twig' %}

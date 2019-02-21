@@ -1,0 +1,191 @@
+{%  include 'PronoteBundle:Admin:header.html.twig' %}
+
+<div class="container-fluid" style="background-color: #ffffff;height: 88%;" >
+	<tr><br><br></tr>
+    <div class="row" style="padding-top: 5%;text-align: center;">
+        <div class="col-sm-2">
+        
+        	<div class="card" style="width: 100%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/1.png') }}">
+              <div  style="background-color:#fcc72e;">
+                <p class="card-text" style="font-size:20px;">{{ eleves }}</p>
+              </div>
+            </div>
+            <tr><br></tr>
+            
+            <div class="card" style="width: 100%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/2.png') }}">
+              <div style="background-color:#fcc72e">
+                <p class="card-text" style="font-size:20px;">{{ emplois }}</p>
+              </div>
+            </div>
+            <tr><br></tr>
+            
+            <div class="card" style="width: 100%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/3.png') }}">
+              <div style="background-color:#fcc72e">
+                <p class="card-text" style="font-size:20px;">{{ professeurs }}</p>
+              </div>
+            </div>
+			<tr><br></tr>
+        </div>
+        
+        <div class="col-sm-2" style="text-align: center;">
+        
+        	<div class="card" style="width: 100%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/4.png') }}">
+              <div style="background-color:#fcc72e;">
+                <p class="card-text" style="font-size:20px;">{{ parents }}</p>
+              </div>
+            </div>
+        	<tr><br></tr>
+        	
+            <div class="card" style="width: 100%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/5.png') }}">
+              <div style="background-color:#fcc72e">
+                <p class="card-text" style="font-size:20px;">{{ classes }}</p>
+              </div>
+            </div>
+            <tr><br></tr>
+            
+            <div class="card" style="width: 100%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/6.png') }}">
+              <div style="background-color:#fcc72e">
+                <p class="card-text" style="font-size:20px;">{{ salles }}</p>
+              </div>
+            </div>
+            <tr><br></tr>
+			
+        </div>
+        
+        <div class="col-sm-2" style="text-align: center;">
+	
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllAdmins/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-administrateurs.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+			<tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllParents/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-parents.jpg') }}" type="image" width="100%" height="100%">
+                    </form>      
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+            <tr>
+    			<div class="card" style="width: 100%;border:none;">
+        			<form action="../showAllMenuCantine/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-de-la-cantine.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+        </div>
+        
+        
+        <div class="col-sm-2" style="text-align: center;">
+            <tr>
+                 <div class="card" style="width: 100%;border:none;">
+                     <form action="../showAllMatieres/" method="post">
+                             <input src="{{ asset('bootstrap/img/Gestion-des-matieres.jpg') }}" type="image" width="100%" height="100%">
+                     </form> 
+                 </div>
+            </tr>
+            <tr><br></tr>
+            
+            <tr>
+        		<div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllEleves/" method="post">
+                          <input src="{{ asset('bootstrap/img/Gestion-des-eleves.jpg') }}" type="image" width="100%" height="100%">
+                    </form>   
+                </div>
+            </tr>
+            <tr><br></tr>
+                   
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllActivitesScolaires/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-activites-scolaires.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+        </div>
+
+        <div class="col-sm-2" style="text-align: center;">
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllTelechargements/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-ressources-pedagogiques.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+           
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllProfesseurs/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-professeurs.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllObservationsGenerales/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-agenda.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+        </div>
+
+        <div class="col-sm-2" style="text-align: center;">
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllEmploisDuTemps/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-emplois-du-temps.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+            
+            
+            <tr>
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllClasses/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-classes.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+
+            <tr>
+
+                <div class="card" style="width: 100%;border:none;">
+                    <form action="../showAllSalles/" method="post">
+                         <input src="{{ asset('bootstrap/img/Gestion-des-salles.jpg') }}" type="image" width="100%" height="100%">
+                    </form> 
+                </div>
+            </tr>
+            <tr><br></tr>
+           
+        </div>
+
+        
+    </div>
+    <tr><br><br></tr>
+    
+
+</div>
+{%  include 'PronoteBundle:Admin:footer.html.twig' %}

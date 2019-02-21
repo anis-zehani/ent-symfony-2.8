@@ -1,0 +1,200 @@
+{%  include 'PronoteBundle:Admin:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Telechargement-->
+        <div class="col-sm-3" style="text-align: left;">
+            <form action="../addTelechargement/" method="post" name="formTelechargements" id="formTelechargements" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Ressources pédagogiques</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputClasseTelechargement"><b>Classe concernée (*)</b></label>
+
+                    <select id="classeTelechargement" name="classeTelechargement" style="border-radius: 10px;width: 100%" required>
+                        <option value="">Vous devez choisir une classe</option>
+                        {% for key in allClasses %}
+                            <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescriptionTelechargement"><b>Description du fichier à envoyer (*)</b></label>
+                    <textarea class="form-control" rows="3" id="descriptionTelechargement" name="descriptionTelechargement" required></textarea>
+                </div>
+
+
+
+
+                <!-- /////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <div class="form-group">
+                    <label for="inputPathTelechargement" id="inputPathTelechargement"><b>Choisir le fichier (*) (taille < 8 Mo)</b></label>
+                    <input class="form-control" type="file" name="fileTelechargement" id="fileTelechargement" required>
+                </div>
+                <!-- /////////////////////////////////////////////////////////////////////////////////////////////////-->
+				
+				
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Envoyer le fichier" style="background-color: #189d8c;border: none;"/>
+                </div>
+
+                <input type="hidden" id="idTelechargement" name="idTelechargement" value="idTelechargement"/>
+
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  onclick="resetTelechargement();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;"/>
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;font-weight: 600;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Description du Téléchargement</th>
+                    <th>Classe concernée</th>
+                    <th>Prévisualiser le document</th>
+                    <th>Responsable</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in allTelechargements %}
+                    <tr>
+                    	<td style="text-align:center;background-color: #FFFFFF">
+                            <a href="#" onclick="idSuppression={{key.idTelechargement}}; document.getElementById('idTelechargementDelete').setAttribute('value',idSuppression); $('#ModaleTelechargement').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td>{{ key.descriptionTelechargement|capitalize }}</td>
+                        <td>{{ key.nomclasseTelechargement|capitalize }}</td>
+                        <td style="vertical-align: center;background-color: #FFFFFF;text-align: center;"><a href="{{app.request.basePath}}/{{key.fileTelechargement}}">Afficher</a></td>
+                        <td>{{ key.nomProfesseur|capitalize }}</td>
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            <a href="#" id="btnModifier" onclick="modifierTelechargement('{{ key.idTelechargement }}','{{ key.descriptionTelechargement |replace({"'": "\\'",'\r\n': '\\r\\n', '\n': '\\n', '\r': '\\r'})}}','{{ key.classeTelechargement }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-row">
+            <!--------------------------- Feêtre POP-UP la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleTelechargement" tabindex="-1" role="dialog" aria-labelledby="exampleModaleTelechargementTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="../deleteTelechargement/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer une ressource pédagogique</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Attention, vous êtes sur le point de supprimer ce fichier.
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idTelechargementDelete" name="idTelechargementDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau Téléchargement)-->
+<SCRIPT>
+    function modifierTelechargement(idTelechargement, descriptionTelechargement, classeTelechargement)
+    {
+        document.getElementById("idTelechargement").value = idTelechargement;
+        document.getElementById("descriptionTelechargement").value = descriptionTelechargement;
+        document.getElementById("classeTelechargement").value = classeTelechargement;
+
+        document.getElementById("inputPathTelechargement").innerHTML = "Choisir le fichier (taille < 8 Mo)";
+        document.getElementById("fileTelechargement").disabled = true;
+
+        document.getElementById("btnAjouter").value = 'Modifier le fichier';
+        var formulaire = document.getElementById('formTelechargements');
+        formulaire.setAttribute("action", "../updateTelechargement/");
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Téléchargement)-->
+<SCRIPT>
+    function resetTelechargement()
+    {
+
+        document.getElementById("descriptionTelechargement").value = '';
+        document.getElementById("classeTelechargement").value = '';
+
+        document.getElementById("inputPathTelechargement").innerHTML = "Choisir le fichier (*) (taille < 8 Mo)";
+        document.getElementById("fileTelechargement").disabled = false;
+
+        document.getElementById("btnAjouter").value = 'Ajouter le fichier';
+        var formulaire = document.getElementById('formTelechargements');
+        formulaire.setAttribute("action", "../addTelechargement/");
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Téléchargement-->
+<SCRIPT type="text/javascript">
+
+    $('#ModaleTelechargement').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+
+    })
+</SCRIPT>
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "Chercher :",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+{%  include 'PronoteBundle:Admin:footer.html.twig' %}

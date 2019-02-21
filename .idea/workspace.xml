@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3edac040-7178-4902-a683-928d59f0b1bb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Controller/ProfesseursController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/afficherEmploiPopModale.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/ajouterEmploiPopModale.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/footer.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/header.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/main.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainActivitesScolaires.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainAdmins.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainClasses.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainEleves.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainEmploi.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainMatieres.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainObservationsGenerales.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainParents.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainSalles.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/modifierEmploiPopModale.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/footer.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/header.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/index.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/main.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainActivitesScolaires.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainAssiduites.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainDevoirs.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainNotes.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainObservationsGenerales.html.twig" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Git pronote.lnk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/.gitkeep" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elferdawrzschool.sql" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Pronote.iml" afterPath="$PROJECT_DIR$/.idea/Pronote.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Controller/AdminController.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Controller/AdminController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Controller/DefaultController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Controller/LoginController.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Controller/LoginController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Entity/Eleves.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Entity/Eleves.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Entity/Emploi.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Entity/Emploi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Entity/Notes.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Entity/Notes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Entity/Professeurs.php" afterPath="$PROJECT_DIR$/src/PronoteBundle/Entity/Professeurs.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/config/routing.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/1sur4.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/1sur4.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/2sur4.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/2sur4.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/4sur4.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/4sur4.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/assiduite.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/assiduite.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/emploi.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/emploi.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/footer.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/footer.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/header.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/header.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/index.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/index.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/main.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/main.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/notes.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/notes.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/travailafaire.html.twig" afterPath="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/travailafaire.html.twig" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <executablePath>composer</executablePath>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="mainDevoirs.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainDevoirs.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="101" column="189" lean-forward="false" selection-start-line="101" selection-start-column="125" selection-end-line="101" selection-end-column="189" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProfesseursController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Controller/ProfesseursController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="721" column="9" lean-forward="true" selection-start-line="721" selection-start-column="9" selection-end-line="721" selection-end-column="9" />
+              <folding>
+                <element signature="e#646#1762#0#PHP" expanded="false" />
+                <element signature="e#1768#1899#0#PHP" expanded="false" />
+                <element signature="e#2146#2514#0#PHP" expanded="false" />
+                <element signature="e#2520#3094#0#PHP" expanded="false" />
+                <element signature="e#3100#4125#0#PHP" expanded="false" />
+                <element signature="e#4131#5009#0#PHP" expanded="false" />
+                <element signature="e#5085#5460#0#PHP" expanded="false" />
+                <element signature="e#5826#6902#0#PHP" expanded="false" />
+                <element signature="e#7027#8064#0#PHP" expanded="false" />
+                <element signature="e#8189#9084#0#PHP" expanded="false" />
+                <element signature="e#9209#10540#0#PHP" expanded="false" />
+                <element signature="e#10665#11045#0#PHP" expanded="false" />
+                <element signature="e#11415#11749#0#PHP" expanded="false" />
+                <element signature="e#11755#12322#0#PHP" expanded="false" />
+                <element signature="e#12328#13397#0#PHP" expanded="false" />
+                <element signature="e#13403#14339#0#PHP" expanded="false" />
+                <element signature="e#14715#15918#0#PHP" expanded="false" />
+                <element signature="e#16048#17207#0#PHP" expanded="false" />
+                <element signature="e#17337#18297#0#PHP" expanded="false" />
+                <element signature="e#18427#19848#0#PHP" expanded="false" />
+                <element signature="e#19978#20402#0#PHP" expanded="false" />
+                <element signature="e#20777#21100#0#PHP" expanded="false" />
+                <element signature="e#21106#21716#0#PHP" expanded="false" />
+                <element signature="e#21722#22709#0#PHP" expanded="false" />
+                <element signature="e#22715#23677#0#PHP" expanded="false" />
+                <element signature="e#27332#28774#0#PHP" expanded="false" />
+                <element signature="e#28901#29296#0#PHP" expanded="false" />
+                <element signature="e#29669#30019#0#PHP" expanded="false" />
+                <element signature="e#30025#30392#0#PHP" expanded="false" />
+                <element signature="e#30398#31237#0#PHP" expanded="false" />
+                <element signature="e#31243#31881#0#PHP" expanded="false" />
+                <element signature="e#32251#33153#0#PHP" expanded="false" />
+                <element signature="e#33280#34084#0#PHP" expanded="false" />
+                <element signature="e#34211#34926#0#PHP" expanded="false" />
+                <element signature="e#35053#36180#0#PHP" expanded="false" />
+                <element signature="e#36307#36824#0#PHP" expanded="false" />
+                <element signature="e#37199#37533#0#PHP" expanded="false" />
+                <element signature="e#37539#37888#0#PHP" expanded="false" />
+                <element signature="e#37894#38809#0#PHP" expanded="false" />
+                <element signature="e#38815#39523#0#PHP" expanded="false" />
+                <element signature="e#39893#40841#0#PHP" expanded="false" />
+                <element signature="e#40968#41824#0#PHP" expanded="false" />
+                <element signature="e#41951#42777#0#PHP" expanded="false" />
+                <element signature="e#42904#44185#0#PHP" expanded="false" />
+                <element signature="e#44312#44802#0#PHP" expanded="false" />
+                <element signature="e#45051#45579#0#PHP" expanded="false" />
+                <element signature="e#45706#46318#0#PHP" expanded="false" />
+                <element signature="e#46444#46967#0#PHP" expanded="false" />
+                <element signature="e#47093#48037#0#PHP" expanded="false" />
+                <element signature="e#48109#49339#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>eleves</find>
+      <find>table-responsive</find>
+      <find>findBy</find>
+      <find>table-bordered</find>
+      <find>nav</find>
+      <find>date_modify</find>
+      <find>observationsGenerales</find>
+      <find>classe</find>
+      <find>home</find>
+      <find>myInput</find>
+      <find>ModaleEmploiDuTemps</find>
+      <find>Datetime</find>
+      <find>Assi</find>
+      <find>showAllNotes</find>
+      <find>ajouter</find>
+      <find>notesFromEleve</find>
+      <find>datetim</find>
+      <find>date</find>
+      <find>resetListeEleves</find>
+      <find>updateNote</find>
+      <find>obse</find>
+      <find>red</find>
+      <find>admin/</find>
+      <find>allEmplois</find>
+      <find>my_table2</find>
+      <find>idMo</find>
+      <find>my_table</find>
+      <find>salleEmploiDuTemps</find>
+      <find>listeFinaleClasses</find>
+      <find>findEmploiFromClasse</find>
+    </findStrings>
+  </component>
+  <component name="FrameworkRootSettings" id="Symfony2">
+    <option name="typedPaths">
+      <list>
+        <element elementPath="$PROJECT_DIR$/app" typeId="app_directory" />
+        <element elementPath="$PROJECT_DIR$/vendor" typeId="vendor_directory" />
+        <element elementPath="$PROJECT_DIR$/web" typeId="web_directory" />
+      </list>
+    </option>
+    <option name="myTypedPaths">
+      <list>
+        <element elementPath="$PROJECT_DIR$/app" typeId="app_directory" />
+        <element elementPath="$PROJECT_DIR$/vendor" typeId="vendor_directory" />
+        <element elementPath="$PROJECT_DIR$/web" typeId="web_directory" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainAssuiduites.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/main.popupGestionNotes.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/popupGestionNotes.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Entity/Eleves.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/main.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/assiduite.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Entity/Notes.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/footer.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainTelechargement.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/main.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/main.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/notes.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Entity/Telechargements.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/2sur4.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/travailafaire.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/4sur4.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/header.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/header.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/1sur4.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/afficherEmploiPopModale.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/footer.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/footer.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/header.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Entity/Emploi.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/emploi.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/ajouterEmploiPopModale.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Controller/LoginController.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainEmploi.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainMatieres.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/modifierEmploiPopModale.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainParents.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainEleves.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainProfesseurs.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainClasses.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainSalles.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainAdmins.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Controller/AdminController.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainTelechargements.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Controller/ProfesseursController.php" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainDevoirs.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainActivitesScolaires.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainAssiduites.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainNotes.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainObservationsGenerales.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainObservationsGenerales.html.twig" />
+        <option value="$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainActivitesScolaires.html.twig" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sensio/distribution-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/sensio/generator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/vendor/ircmaxell/password-compat" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php54" />
+      <path value="$PROJECT_DIR$/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php55" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-acl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/phpcollection/phpcollection" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/jms/parser-lib" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
+      <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-131" />
+    <option name="width" value="906" />
+    <option name="height" value="788" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="PronoteBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="PronoteBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="PronoteBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="PronoteBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="pronote" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pronote" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="PronoteBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Professeurs" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../odix-crm" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pronote\src\PronoteBundle\Resources\views\Admin" />
+      <recent name="C:\xampp\htdocs\pronote\src\PronoteBundle\Resources\views\Professeurs" />
+      <recent name="C:\xampp\htdocs\pronote\src\PronoteBundle\Controller" />
+      <recent name="C:\xampp\htdocs\pronote\src\PronoteBundle\Resources\views\admin" />
+      <recent name="C:\xampp\htdocs\pronote\src\PronoteBundle\Resources\views\Default" />
+    </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost" />
+          <option name="urlPath" value="/pronote/web/all" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.LoginController.php">
+    <configuration name="LoginController.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/pronote/Controller/LoginController.php" />
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.LoginController.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Anis\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3edac040-7178-4902-a683-928d59f0b1bb" name="Default" comment="" />
+      <created>1517827397006</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1517827397006</updated>
+      <workItem from="1517827404155" duration="157000" />
+      <workItem from="1517827611026" duration="561000" />
+      <workItem from="1517828191672" duration="11202000" />
+      <workItem from="1517875309083" duration="7524000" />
+      <workItem from="1517923480378" duration="80000" />
+      <workItem from="1517923692240" duration="6157000" />
+      <workItem from="1517942875209" duration="215000" />
+      <workItem from="1517962974564" duration="4899000" />
+      <workItem from="1517969658623" duration="3736000" />
+      <workItem from="1518009607984" duration="3837000" />
+      <workItem from="1518016504876" duration="7967000" />
+      <workItem from="1518049738890" duration="1020000" />
+      <workItem from="1518052197053" duration="287000" />
+      <workItem from="1518052505435" duration="1645000" />
+      <workItem from="1518100060776" duration="12000000" />
+      <workItem from="1518169677707" duration="13779000" />
+      <workItem from="1518272296822" duration="313000" />
+      <workItem from="1518275310303" duration="16692000" />
+      <workItem from="1518293792541" duration="215000" />
+      <workItem from="1518314310799" duration="276000" />
+      <workItem from="1518428888958" duration="14561000" />
+      <workItem from="1518478177345" duration="10144000" />
+      <workItem from="1518513824854" duration="7391000" />
+      <workItem from="1518601268277" duration="15634000" />
+      <workItem from="1518633866282" duration="188000" />
+      <workItem from="1518703293925" duration="17008000" />
+      <workItem from="1518738144582" duration="9834000" />
+      <workItem from="1518789677721" duration="17987000" />
+      <workItem from="1518818198635" duration="13953000" />
+      <workItem from="1518907040375" duration="5241000" />
+      <workItem from="1518947471968" duration="12579000" />
+      <workItem from="1519050006421" duration="12777000" />
+      <workItem from="1519083040784" duration="13125000" />
+      <workItem from="1519125790108" duration="4048000" />
+      <workItem from="1519315597741" duration="4824000" />
+      <workItem from="1519380033121" duration="15584000" />
+      <workItem from="1519428235185" duration="6786000" />
+      <workItem from="1519435053963" duration="2200000" />
+      <workItem from="1519438536329" duration="1247000" />
+      <workItem from="1519487910575" duration="598000" />
+      <workItem from="1519575611096" duration="6790000" />
+      <workItem from="1519659784953" duration="3700000" />
+      <workItem from="1519686364160" duration="13151000" />
+      <workItem from="1519740515721" duration="15939000" />
+      <workItem from="1519771725275" duration="3948000" />
+      <workItem from="1519776868070" duration="3123000" />
+      <workItem from="1519841827775" duration="673000" />
+      <workItem from="1519860196199" duration="1235000" />
+      <workItem from="1519926510481" duration="1213000" />
+      <workItem from="1519988636275" duration="3687000" />
+      <workItem from="1520094242133" duration="4347000" />
+      <workItem from="1520182553683" duration="8606000" />
+      <workItem from="1520191321451" duration="2360000" />
+      <workItem from="1520244952245" duration="1229000" />
+      <workItem from="1520294293375" duration="7043000" />
+      <workItem from="1520333723415" duration="14836000" />
+      <workItem from="1520380037102" duration="10248000" />
+      <workItem from="1520435650866" duration="9079000" />
+      <workItem from="1520465231250" duration="13744000" />
+      <workItem from="1520518279835" duration="5826000" />
+      <workItem from="1520552925938" duration="12439000" />
+      <workItem from="1520584725243" duration="14545000" />
+      <workItem from="1520617596957" duration="684000" />
+      <workItem from="1520704716513" duration="2429000" />
+      <workItem from="1520715399199" duration="3040000" />
+      <workItem from="1520794501035" duration="9630000" />
+      <workItem from="1520805827828" duration="1312000" />
+      <workItem from="1520848173147" duration="3783000" />
+      <workItem from="1520856745628" duration="16581000" />
+      <workItem from="1520897065528" duration="5267000" />
+      <workItem from="1520950539471" duration="5460000" />
+      <workItem from="1520984937183" duration="8357000" />
+      <workItem from="1520996514766" duration="46000" />
+      <workItem from="1521038529470" duration="1850000" />
+      <workItem from="1521069591898" duration="4624000" />
+      <workItem from="1521079867322" duration="6868000" />
+      <workItem from="1521101314336" duration="22911000" />
+      <workItem from="1521203401330" duration="1676000" />
+      <workItem from="1521306633897" duration="11430000" />
+      <workItem from="1521332295431" duration="10959000" />
+      <workItem from="1521402631440" duration="1208000" />
+      <workItem from="1521492064895" duration="11805000" />
+      <workItem from="1521547325866" duration="1994000" />
+      <workItem from="1521627743989" duration="598000" />
+      <workItem from="1521818510053" duration="598000" />
+      <workItem from="1521908044578" duration="1196000" />
+      <workItem from="1521998878565" duration="2149000" />
+      <workItem from="1522052548253" duration="14025000" />
+      <workItem from="1522152210190" duration="18864000" />
+      <workItem from="1522191817786" duration="7981000" />
+      <workItem from="1522321955103" duration="3473000" />
+      <workItem from="1522410443341" duration="597000" />
+      <workItem from="1522455899806" duration="4473000" />
+      <workItem from="1522519259552" duration="6170000" />
+      <workItem from="1522588672666" duration="592000" />
+      <workItem from="1522594060999" duration="10494000" />
+      <workItem from="1522621124850" duration="9810000" />
+      <workItem from="1522661310611" duration="7062000" />
+      <workItem from="1522762283054" duration="92000" />
+      <workItem from="1522766979009" duration="12849000" />
+      <workItem from="1522799398189" duration="11684000" />
+      <workItem from="1522847095259" duration="24025000" />
+      <workItem from="1522880446057" duration="7980000" />
+      <workItem from="1522889796306" duration="348000" />
+      <workItem from="1522918758680" duration="19624000" />
+      <workItem from="1523013510723" duration="1691000" />
+      <workItem from="1523288269563" duration="1102000" />
+      <workItem from="1491767508745" duration="630000" />
+      <workItem from="1522600537829" duration="1375000" />
+      <workItem from="1522594836037" duration="4694000" />
+      <workItem from="1522600738979" duration="4953000" />
+    </task>
+    <task id="LOCAL-00001" summary="Ajout du controlleur Admin">
+      <created>1519995680577</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1519995680577</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Ajout du controlleur Admin">
+      <created>1519995806728</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1519995806728</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ajout du controlleur Admin">
+      <created>1519995977182</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1519995977182</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Ajout du controlleur Admin">
+      <created>1520105060349</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1520105060349</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="747075000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="936" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2328125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39951575" sideWeight="0.50625" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39951575" sideWeight="0.49375" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292978" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292978" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32808718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292978" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39951575" sideWeight="0.50625" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292978" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2328125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32808718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39951575" sideWeight="0.49375" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ajout du controlleur Admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout du controlleur Admin" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="17" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/notes.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/main.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="58" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/3sur4.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/main.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="30" column="14" lean-forward="false" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Telechargements.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="41" column="7" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/2sur4.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="44" column="182" lean-forward="false" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="182" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/travailafaire.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="171" column="0" lean-forward="true" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="26" lean-forward="false" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/4sur4.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-160">
+          <caret line="3" column="159" lean-forward="false" selection-start-line="3" selection-start-column="159" selection-end-line="3" selection-end-column="159" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Classe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Salles.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="7" lean-forward="false" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Seance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="7" lean-forward="false" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Matieres.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/1sur4.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="718" column="6" lean-forward="false" selection-start-line="718" selection-start-column="6" selection-end-line="718" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/afficherEmploiPopModale.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/footer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/footer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/header.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="36" column="94" lean-forward="false" selection-start-line="36" selection-start-column="94" selection-end-line="36" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Emploi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="400" column="7" lean-forward="false" selection-start-line="400" selection-start-column="7" selection-end-line="400" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/emploi.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="125" lean-forward="false" selection-start-line="10" selection-start-column="125" selection-end-line="10" selection-end-column="125" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/header.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="156" column="51" lean-forward="false" selection-start-line="156" selection-start-column="42" selection-end-line="156" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Entity/Eleves.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="19" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="28" column="49" lean-forward="false" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/ajouterEmploiPopModale.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="63" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/main.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-449">
+          <caret line="64" column="59" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/modifierEmploiPopModale.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainMatieres.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainEmploi.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="431" column="0" lean-forward="false" selection-start-line="398" selection-start-column="0" selection-end-line="431" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainParents.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="220" column="0" lean-forward="true" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainEleves.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainClasses.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainProfesseurs.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="189" column="0" lean-forward="true" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainSalles.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainAdmins.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="65" column="107" lean-forward="true" selection-start-line="65" selection-start-column="107" selection-end-line="65" selection-end-column="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainTelechargements.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="82" column="66" lean-forward="false" selection-start-line="82" selection-start-column="66" selection-end-line="82" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Controller/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="2443" column="49" lean-forward="false" selection-start-line="2443" selection-start-column="49" selection-end-line="2443" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="140" lean-forward="false" selection-start-line="22" selection-start-column="137" selection-end-line="22" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Default/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/header.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="10" lean-forward="false" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/footer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="24" column="7" lean-forward="false" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainActivitesScolaires.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="79" column="275" lean-forward="false" selection-start-line="79" selection-start-column="275" selection-end-line="79" selection-end-column="275" />
+          <folding>
+            <element signature="e#13#55#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainAssiduites.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="113" column="194" lean-forward="false" selection-start-line="113" selection-start-column="194" selection-end-line="113" selection-end-column="194" />
+          <folding>
+            <element signature="e#13#55#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainObservationsGenerales.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="74" column="284" lean-forward="false" selection-start-line="74" selection-start-column="284" selection-end-line="74" selection-end-column="284" />
+          <folding>
+            <element signature="e#13#49#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Admin/mainActivitesScolaires.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="82" column="275" lean-forward="false" selection-start-line="82" selection-start-column="275" selection-end-line="82" selection-end-column="275" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainObservationsGenerales.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="73" column="284" lean-forward="false" selection-start-line="73" selection-start-column="284" selection-end-line="73" selection-end-column="284" />
+          <folding>
+            <element signature="e#13#55#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainNotes.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="111" column="183" lean-forward="false" selection-start-line="111" selection-start-column="183" selection-end-line="111" selection-end-column="183" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Resources/views/Professeurs/mainDevoirs.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="101" column="189" lean-forward="false" selection-start-line="101" selection-start-column="125" selection-end-line="101" selection-end-column="189" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PronoteBundle/Controller/ProfesseursController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="721" column="9" lean-forward="true" selection-start-line="721" selection-start-column="9" selection-end-line="721" selection-end-column="9" />
+          <folding>
+            <element signature="e#646#1762#0#PHP" expanded="false" />
+            <element signature="e#1768#1899#0#PHP" expanded="false" />
+            <element signature="e#2146#2514#0#PHP" expanded="false" />
+            <element signature="e#2520#3094#0#PHP" expanded="false" />
+            <element signature="e#3100#4125#0#PHP" expanded="false" />
+            <element signature="e#4131#5009#0#PHP" expanded="false" />
+            <element signature="e#5085#5460#0#PHP" expanded="false" />
+            <element signature="e#5826#6902#0#PHP" expanded="false" />
+            <element signature="e#7027#8064#0#PHP" expanded="false" />
+            <element signature="e#8189#9084#0#PHP" expanded="false" />
+            <element signature="e#9209#10540#0#PHP" expanded="false" />
+            <element signature="e#10665#11045#0#PHP" expanded="false" />
+            <element signature="e#11415#11749#0#PHP" expanded="false" />
+            <element signature="e#11755#12322#0#PHP" expanded="false" />
+            <element signature="e#12328#13397#0#PHP" expanded="false" />
+            <element signature="e#13403#14339#0#PHP" expanded="false" />
+            <element signature="e#14715#15918#0#PHP" expanded="false" />
+            <element signature="e#16048#17207#0#PHP" expanded="false" />
+            <element signature="e#17337#18297#0#PHP" expanded="false" />
+            <element signature="e#18427#19848#0#PHP" expanded="false" />
+            <element signature="e#19978#20402#0#PHP" expanded="false" />
+            <element signature="e#20777#21100#0#PHP" expanded="false" />
+            <element signature="e#21106#21716#0#PHP" expanded="false" />
+            <element signature="e#21722#22709#0#PHP" expanded="false" />
+            <element signature="e#22715#23677#0#PHP" expanded="false" />
+            <element signature="e#27332#28774#0#PHP" expanded="false" />
+            <element signature="e#28901#29296#0#PHP" expanded="false" />
+            <element signature="e#29669#30019#0#PHP" expanded="false" />
+            <element signature="e#30025#30392#0#PHP" expanded="false" />
+            <element signature="e#30398#31237#0#PHP" expanded="false" />
+            <element signature="e#31243#31881#0#PHP" expanded="false" />
+            <element signature="e#32251#33153#0#PHP" expanded="false" />
+            <element signature="e#33280#34084#0#PHP" expanded="false" />
+            <element signature="e#34211#34926#0#PHP" expanded="false" />
+            <element signature="e#35053#36180#0#PHP" expanded="false" />
+            <element signature="e#36307#36824#0#PHP" expanded="false" />
+            <element signature="e#37199#37533#0#PHP" expanded="false" />
+            <element signature="e#37539#37888#0#PHP" expanded="false" />
+            <element signature="e#37894#38809#0#PHP" expanded="false" />
+            <element signature="e#38815#39523#0#PHP" expanded="false" />
+            <element signature="e#39893#40841#0#PHP" expanded="false" />
+            <element signature="e#40968#41824#0#PHP" expanded="false" />
+            <element signature="e#41951#42777#0#PHP" expanded="false" />
+            <element signature="e#42904#44185#0#PHP" expanded="false" />
+            <element signature="e#44312#44802#0#PHP" expanded="false" />
+            <element signature="e#45051#45579#0#PHP" expanded="false" />
+            <element signature="e#45706#46318#0#PHP" expanded="false" />
+            <element signature="e#46444#46967#0#PHP" expanded="false" />
+            <element signature="e#47093#48037#0#PHP" expanded="false" />
+            <element signature="e#48109#49339#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

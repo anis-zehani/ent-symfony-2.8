@@ -1,0 +1,80 @@
+<!--
+<div class="container-fluid fixed-bottom text-center" style="background-color: #ed494c; color:#ffffff;height:4%;font-size:15px;font-weight: 300;">
+    <div class="row" style="horiz-align: center;">
+        <div class="col-6" style="text-align: left;">
+            Espace numérique de travail
+        </div>
+        <div class="col-6" style="text-align: right;">
+            www.smartgraphe.com
+        </div>
+    </div>
+</div>
+-->
+
+<!-- Imports JS de Bootstrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>  
+
+<!-- Imports JS de la DATATABLE-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- SESSION TIMEOUT -->	
+<script src={{ asset('bootstrap/js/bootstrap.min.js') }}></script>
+<script src={{ asset('bootstrap/js/jquery.userTimeout.js') }}></script>	
+   
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "Chercher :",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+<!-- SESSION TIMEOUT 
+https://www.jqueryscript.net/other/Session-Timeout-Alert-Plugin-With-jQuery-userTimeout.html
+-->
+<script>
+    $(document).ready(function(){
+        $(document).userTimeout({
+            logouturl: '{{app.request.basePath}}/exit/',   
+            modalTitle: '',
+            modalBody: 'Votre Session va expirer dans 60 secondes',
+            modalLogOffBtn: 'Quitter',
+            modalStayLoggedBtn: 'Je comprend',
+            timer: true, 
+            force: 60000,    //1 minute
+            session: 1800000  //30 minutes
+        });
+    });
+</script>
+
+
+</body>
+</html>

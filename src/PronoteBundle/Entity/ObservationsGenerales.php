@@ -1,0 +1,138 @@
+<?php
+
+namespace PronoteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ObservationsGenerales
+ *
+ * @ORM\Table(name="observations_generales")
+ * @ORM\Entity(repositoryClass="PronoteBundle\Repository\ObservationsGeneralesRepository")
+ */
+class ObservationsGenerales
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=512)
+     */
+    private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Classe", inversedBy="listeObservationsGenerales")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $classe;
+
+    /**
+     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="Professeurs")
+     */
+    private $professeur;
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Ecole")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $ecole;
+    
+    /**************Getters et Setters Ecole (ManyToOne)*****************/
+    /**
+     * @return Ecole
+     */
+    public function getEcole()
+    {
+        return $this->ecole;
+    }
+    
+    /**
+     * @param Ecole $ecole
+     */
+    public function setEcole(Ecole $ecole)
+    {
+        $this->ecole = $ecole;
+        
+    }
+    
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return ObservationsGenerales
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
+    /**
+     * @return Classe
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * @param Classe $classe
+     */
+    public function setClasse($classe)
+    {
+        $this->classe = $classe;
+    }
+    
+    
+    /**
+     * @return Professeurs
+     */
+    public function getProfesseur()
+    {
+        return $this->professeur;
+    }
+    
+    /**
+     * @param Professeurs $idProfesseur
+     */
+    public function setProfesseur($idProfesseur)
+    {
+        $this->professeur = $idProfesseur;
+    }
+    
+}
+

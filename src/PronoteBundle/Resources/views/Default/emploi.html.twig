@@ -1,0 +1,384 @@
+{% include 'PronoteBundle:Default:header.html.twig' %}
+
+{% if pageData3 is defined and pageData3|length>0 %}
+    {% set labelEmploi = pageData3.designationEmploi %}
+{% else %}
+    {% set labelEmploi = "Emploi bientôt disponible" %}
+{% endif %}
+
+
+<div class="container-fluid" style="height: 88%;">
+    <nav aria-label="breadcrumb" >
+        <ol class="breadcrumb" style="background-color: #9cd100;color:#fff">
+            <form action="{{app.request.basePath}}/accueil/" method="post">
+                  <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                  <input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+                  <input type="submit" value="Acceuil" style="padding-left:3px;color:white;background-color:#9cd100;border:0;cursor: pointer;">
+            </form>/ {{ labelEmploi }}</li>
+        </ol>
+        
+    </nav>
+    
+    {% if pageData3 is defined and pageData3|length>0 %}
+    
+    <div class="row align-items-start">
+        <div class="col-sm" style="text-align: center;">
+        	<div class="table-responsive">
+					<img src="{{ asset('bootstrap/img/emploi.jpg') }}" width="40%" height="40%" style="border-radius:5%" >
+			</div>
+            <div class="table-responsive">
+            
+              <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 13px;font-weight: 500;overflow-x: scroll ;overflow-y: scroll ;">
+                    <tdead>
+                        <tr style="color: #000000">
+                            <th scope="col" style="background-color:#baded6">Horaires</th>
+                            <th scope="col" style="background-color:#45a6bf">Lundi</th>
+                            <th scope="col" style="background-color:#fce354">Mardi</th>
+                            <th scope="col" style="background-color:#9bc61e">Mercredi</th>
+                            <th scope="col" style="background-color:#eb5e69">Jeudi</th>
+                            <th scope="col" style="background-color:#f296a3">Vendredi</th>
+                        </tr>
+                    </tdead>
+                    <tbody>
+                    <tr>
+                        <td scope="row" style="background-color: #ffffff; color: #000000;font-weight:bold;">8 - 9</td>
+                        {% if pageData3.seance_1_1 is not empty %}
+                            {% set foo = pageData3.seance_1_1 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_1 is not empty %}
+                            {% set foo = pageData3.seance_2_1 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_1 is not empty %}
+                            {% set foo = pageData3.seance_3_1 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_1 is not empty %}
+                            {% set foo = pageData3.seance_4_1 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_1 is not empty %}
+                            {% set foo = pageData3.seance_5_1 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #f5f5f5; color: #000000;font-weight:bold;">9 - 10</td>
+                        {% if pageData3.seance_1_2 is not empty %}
+                            {% set foo = pageData3.seance_1_2 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_2 is not empty %}
+                            {% set foo = pageData3.seance_2_2 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_2 is not empty %}
+                            {% set foo = pageData3.seance_3_2 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_2 is not empty %}
+                            {% set foo = pageData3.seance_4_2 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_2 is not empty %}
+                            {% set foo = pageData3.seance_5_2 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #ffffff; color: #000000;font-weight:bold;">10 - 11</td>
+                        {% if pageData3.seance_1_3 is not empty %}
+                            {% set foo = pageData3.seance_1_3 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_3 is not empty %}
+                            {% set foo = pageData3.seance_2_3 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_3 is not empty %}
+                            {% set foo = pageData3.seance_3_3 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_3 is not empty %}
+                            {% set foo = pageData3.seance_4_3 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_3 is not empty %}
+                            {% set foo = pageData3.seance_5_3 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #f5f5f5; color: #000000;font-weight:bold;">11 - 12</td>
+                        {% if pageData3.seance_1_4 is not empty %}
+                            {% set foo = pageData3.seance_1_4 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_4 is not empty %}
+                            {% set foo = pageData3.seance_2_4 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_4 is not empty %}
+                            {% set foo = pageData3.seance_3_4 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_4 is not empty %}
+                            {% set foo = pageData3.seance_4_4 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_4 is not empty %}
+                            {% set foo = pageData3.seance_5_4 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #ffffff; color: #000000;font-weight:bold;">12 - 13</td>
+                        {% if pageData3.seance_1_5 is not empty %}
+                            {% set foo = pageData3.seance_1_5 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_5 is not empty %}
+                            {% set foo = pageData3.seance_2_5 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_5 is not empty %}
+                            {% set foo = pageData3.seance_3_5 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_5 is not empty %}
+                            {% set foo = pageData3.seance_4_5 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_5 is not empty %}
+                            {% set foo = pageData3.seance_5_5 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #f5f5f5; color: #000000;font-weight:bold;">13 - 14</td>
+                        {% if pageData3.seance_1_6 is not empty %}
+                            {% set foo = pageData3.seance_1_6 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_6 is not empty %}
+                            {% set foo = pageData3.seance_2_6 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_6 is not empty %}
+                            {% set foo = pageData3.seance_3_6 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_6 is not empty %}
+                            {% set foo = pageData3.seance_4_6 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_6 is not empty %}
+                            {% set foo = pageData3.seance_5_6 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #ffffff; color: #000000;font-weight:bold;">14 - 15</td>
+                        {% if pageData3.seance_1_7 is not empty %}
+                            {% set foo = pageData3.seance_1_7 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_7 is not empty %}
+                            {% set foo = pageData3.seance_2_7 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_7 is not empty %}
+                            {% set foo = pageData3.seance_3_7 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_7 is not empty %}
+                            {% set foo = pageData3.seance_4_7 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_7 is not empty %}
+                            {% set foo = pageData3.seance_5_7 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #f5f5f5; color: #000000;font-weight:bold;">15 - 16</td>
+                        {% if pageData3.seance_1_8 is not empty %}
+                            {% set foo = pageData3.seance_1_8 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_8 is not empty %}
+                            {% set foo = pageData3.seance_2_8 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_8 is not empty %}
+                            {% set foo = pageData3.seance_3_8 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_8 is not empty %}
+                            {% set foo = pageData3.seance_4_8 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_8 is not empty %}
+                            {% set foo = pageData3.seance_5_8 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #ffffff; color: #000000;font-weight:bold;">16 - 17</td>
+                        {% if pageData3.seance_1_9 is not empty %}
+                            {% set foo = pageData3.seance_1_9 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_9 is not empty %}
+                            {% set foo = pageData3.seance_2_9 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_9 is not empty %}
+                            {% set foo = pageData3.seance_3_9 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_9 is not empty %}
+                            {% set foo = pageData3.seance_4_9 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_9 is not empty %}
+                            {% set foo = pageData3.seance_5_9 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td scope="row" style="background-color: #f5f5f5; color: #000000;font-weight:bold;">17 - 18</td>
+                        {% if pageData3.seance_1_10 is not empty %}
+                            {% set foo = pageData3.seance_1_10 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_2_10 is not empty %}
+                            {% set foo = pageData3.seance_2_10 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_3_10 is not empty %}
+                            {% set foo = pageData3.seance_3_10 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_4_10 is not empty %}
+                            {% set foo = pageData3.seance_4_10 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#f5f5f5"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                        {% if pageData3.seance_5_10 is not empty %}
+                            {% set foo = pageData3.seance_5_10 |split('@@') %}
+                            <td style="padding: 0.05rem;  vertical-align: middle;background-color:#ffffff"><b>{{ foo[0] }}</b><br>  Salle : {{ foo[1] }}</td>
+                        {% else %}
+                            <td style="background-color: #ffffff"></td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+                <tr><br><br></tr>
+
+            </div>
+
+
+        </div>
+        {% endif %}
+
+{% include 'PronoteBundle:Default:footer.html.twig' %}

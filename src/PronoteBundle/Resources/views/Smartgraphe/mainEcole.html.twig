@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="« L'enseignement devrait être ainsi : celui qui le reçoit le recueille comme un don inestimable mais jamais comme une contrainte pénible »" />
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset('bootstrap/img/favicon.ico') }}">
+
+    <title>Smartgraphe - Espace Privé</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href={{ asset('bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    
+    
+  	<link href={{ asset('bootstrap/css/bootstrap.css') }} rel="stylesheet">
+    <link href={{ asset('bootstrap/css/dataTables.bootstrap4.min.css') }} rel="stylesheet">
+
+    <!-- Imports JS de la DATATABLE (utile aussi pour la Modale), laisser dans le head-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+</head>
+
+<body style="background-color: #fff;font-family: 'Roboto', sans-serif;">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-inverse" style="height:10%;background-color: #48668c;">
+
+    <a href="{{app.request.basePath}}/smartgraphe/showAllEcoles/" class="navbar-brand" style="padding-top:0%;padding-bottom:0%;background-color: #48668c;">
+        <img src="{{ asset('bootstrap/img/logo.png') }}" width="70%" alt="Acceuil" style="float:left">
+    </a>
+  	<button class="navbar-toggler" style="background-color: #4e5053" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarText" style="background-color: #48668c;text-align:left;">  
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+
+        <span class="navbar-text" style="color: #ffffff;">
+            &nbsp;Tunis le : {{ "now"|date("d/m/Y", "Europe/Paris") }} &nbsp;&nbsp;<a href="{{app.request.basePath}}/smartgraphe/"><img src={{ asset('bootstrap/img/exit.png') }} width="25" height="25"></a>
+        </span>
+  </div>
+</nav>
+
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:100%;overflow-y: scroll ;" >
+	
+    <div class="row align-items-start">
+
+        <!-- Chiffres clés-->
+        <div class="col-sm-2" style="text-align: center;">
+        
+        	<div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-eleves.jpg') }}">
+              <div  style="-background-color:#fcc72e;">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Élèves<br>{{ eleves }}</p>
+              </div>
+            </div>
+            <tr></tr>
+            
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-classes.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Classes<br>{{ classes }}</p>
+              </div>
+            </div>
+            <tr></tr>
+            
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-emplois.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Emlpois<br>{{ emplois }}</p>
+              </div>
+            </div>
+            <tr></tr>
+            
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-notes.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Notes<br>{{ notes }}</p>
+              </div>
+            </div>
+            <tr></tr>
+        </div>
+        
+        <div class="col-sm-2" style="text-align: center;">
+        
+        	<div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-parents.jpg') }}">
+              <div style="-background-color:#fcc72e;">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Parents<br>{{ parents }}</p>
+              </div>
+            </div>
+        	<tr></tr>
+        	
+        	<div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-professeurs.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Professeurs<br>{{ professeurs }}</p>
+              </div>
+            </div>
+			<tr></tr>
+        	
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-admins.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Admins<br>{{ admins }}</p>
+              </div>
+            </div>
+			<tr></tr>
+			
+			<div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-telechargements.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Téléchargements<br>{{ telechargements }}</p>
+              </div>
+            </div>
+            <tr></tr>
+        </div>
+        
+        <div class="col-sm-2" style="text-align: center;">
+        
+        	<div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-devoirs.jpg') }}">
+              <div  style="-background-color:#fcc72e;">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Devoirs<br>{{ devoirs }}</p>
+              </div>
+            </div>
+            <tr></tr>
+            
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-assiduites.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Assiduités<br>{{ assiduites }}</p>
+              </div>
+            </div>
+            <tr></tr>
+            
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-menuCantine.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Menu cantine<br>{{ menuCantine }}</p>
+              </div>
+            </div>
+            <tr></tr>
+            
+            <div class="card" style="width: 70%;border:none;">
+              <img class="card-img-top" src="{{ asset('bootstrap/img/anis-notifications.jpg') }}">
+              <div style="-background-color:#fcc72e">
+                <p class="card-text" style="font-size:15px;font-weight: 600;">Notifications<br>{{ notifications }}</p>
+              </div>
+            </div>
+            <tr></tr>
+        </div>
+
+        <div class="col-sm-6" style="text-align: left;">
+        	<div class="form-group">
+                 <label for="nameScreen" style="color: #48668c;font-size: 18px;font-weight: 600;margin-left:12px;">Détails des accés par profil :</label>
+            </div>
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th>Total Super Admins</th>
+                    <th>Total Admins</th>
+                    <th>Total Professeurs</th>
+                    <th>Total Parents</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>{{ analytics['superadmin'] }}</td>
+                        <td>{{ analytics['admin'] }}</td>
+                        <td>{{ analytics['professeur'] }}</td>
+                        <td>{{ analytics['parent'] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            
+            {% if paths['pathCin'] |length > 0 or paths['pathRc'] |length > 0 or paths['pathLogo'] |length > 0%}
+            <div class="form-group">
+                 <label for="nameScreen" style="color: #48668c;font-size: 18px;font-weight: 600;margin-left:12px;">Documents administratifs :</label>
+            </div>
+            {% endif %}
+            
+            {% if paths['pathCin'] |length > 0 %}
+            <div class="form-row" style="color: #48668c;-font-size: 18px;font-weight: 600;margin-left:8px;">
+                    <div class="form-group">
+                        <a href="{{app.request.basePath}}/{{ paths['pathCin'] }}">1- CIN du Gérant</a>
+                    </div>
+            </div>
+            {% endif %}
+            
+            {% if paths['pathRc'] |length > 0 %}
+            <div class="form-row" style="color: #48668c;-font-size: 18px;font-weight: 600;margin-left:8px;">
+                    <div class="form-group">
+                        <a href="{{app.request.basePath}}/{{ paths['pathRc'] }}">2- Registre du Commerce</a>
+                    </div>
+            </div>
+            {% endif %}
+            
+            {% if paths['pathLogo'] |length > 0 %}
+            <div class="form-row" style="color: #48668c;-font-size: 18px;font-weight: 600;margin-left:8px;">
+                    <div class="form-group">
+                        <img src="{{app.request.basePath}}/{{ paths['pathLogo'] }}" style="width:160px;height:60px;">
+                    </div>
+            </div>
+            {% endif %}
+            
+           
+            <div class="form-row" style="margin-left:10px;">
+
+                     <form action="../archiveUnarchiveLogo/" method="post">
+                           <input type="hidden"  id="idEcoleAfficher" name="idEcoleAfficher" value={{idEcole}}/>
+                           
+                           {% if logoEcole |length > 0 %}
+                             	<input type="submit" class="btn btn-primary btn-sm btn-block" value="Désactiver le logo" style="background-color: #ed2b34;border: none;width:160px;">
+                           {% else %}
+                            	<input type="submit" class="btn btn-primary btn-sm btn-block" value="Activer le logo"  style="background-color: #189d8c;border: none;width:160px;">
+                           {% endif %}
+                     </form>
+            </div>
+
+            
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+<!-- Imports JS de Bootstrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>  
+
+<!-- Imports JS de la DATATABLE-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- SESSION TIMEOUT -->	
+<script src={{ asset('bootstrap/js/bootstrap.min.js') }}></script>
+<script src={{ asset('bootstrap/js/jquery.userTimeout.js') }}></script>	
+   
+
+</body>
+</html>

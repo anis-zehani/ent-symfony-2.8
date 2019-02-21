@@ -1,0 +1,179 @@
+{%  include 'PronoteBundle:Admin:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification ObservationGenerale-->
+        <div class="col-sm-3" style="text-align: left;">
+            <form action="../addObservationGenerale/" method="post" name="formObservationGenerales" id="formObservationGenerales">
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Agenda</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputClasseObservationGenerale"><b>Classe concernée (*)</b></label>
+
+                    <select id="classeObservationGenerale" name="classeObservationGenerale" style="border-radius: 10px;width: 100%" required>
+                        <option value="">Vous devez choisir une classe</option>
+                        {% for key in allClasses %}
+                            <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDescriptionObservationGenerale"><b>Description (*)</b></label>
+                    <textarea class="form-control" rows="5" id="descriptionObservationGenerale" name="descriptionObservationGenerale"  required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Ajouter à votre agenda" style="background-color: #189d8c;border: none;"/>
+                </div>
+
+                <input type="hidden" id="idObservationGenerale" name="idObservationGenerale" value="idObservationGenerale"/>
+
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  onclick="resetObservationGenerale();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;"/>
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+				
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;font-weight: 600;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Description</th>
+                    <th>Classe concernée</th>
+                    <th>Responsable</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in allObservationsGenerales %}
+                    <tr>
+                        <td style="text-align:center;background-color: #FFFFFF">
+                            <a href="#" onclick="idSuppression={{key.idObservationGenerale}}; document.getElementById('idObservationGeneraleDelete').setAttribute('value',idSuppression); $('#ModaleObservationGenerale').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td>{{ key.descriptionObservationGenerale|capitalize }}</td>
+                        <td>{{ key.nomclasseObservationGenerale|capitalize }}</td>
+                        <td>{{ key.nomProfesseur|capitalize }}</td>
+                        <td style="text-align:center;background-color: #FFFFFF"><a href="#" id="btnModifier" onclick="modifierObservationGenerale('{{ key.idObservationGenerale }}','{{ key.descriptionObservationGenerale |replace({"'": "\\'",'\r\n': '\\r\\n', '\n': '\\n', '\r': '\\r'})}}','{{ key.classeObservationGenerale }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-row">
+            <!--------------------------- Feêtre POP-UP la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleObservationGenerale" tabindex="-1" role="dialog" aria-labelledby="exampleModaleObservationGeneraleTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="../deleteObservationGenerale/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer un élément de l'agenda</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="text-align:left;">
+                                Attention, vous êtes sur le point de supprimer cet élément.
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idObservationGeneraleDelete" name="idObservationGeneraleDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau Observation Générale)-->
+<SCRIPT>
+    function modifierObservationGenerale(idObservationGenerale, descriptionObservationGenerale, classeObservationGenerale)
+    {
+        document.getElementById("idObservationGenerale").value = idObservationGenerale;
+        document.getElementById("descriptionObservationGenerale").value = descriptionObservationGenerale;
+        document.getElementById("classeObservationGenerale").value = classeObservationGenerale;
+
+        document.getElementById("btnAjouter").value = 'Modifier votre agenda';
+        var formulaire = document.getElementById('formObservationGenerales');
+        formulaire.setAttribute("action", "../updateObservationGenerale/");
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Observation Générale)-->
+<SCRIPT>
+    function resetObservationGenerale()
+    {
+
+        document.getElementById("descriptionObservationGenerale").value = '';
+        document.getElementById("classeObservationGenerale").value = '';
+
+        document.getElementById("btnAjouter").value = 'Ajouter à votre agenda';
+        var formulaire = document.getElementById('formObservationGenerales');
+        formulaire.setAttribute("action", "../addObservationGenerale/");
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Observation Générale-->
+<SCRIPT type="text/javascript">
+    $('#ModaleObservationGenerale').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+    })
+</SCRIPT>
+
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "Chercher :",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+
+{%  include 'PronoteBundle:Admin:footer.html.twig' %}

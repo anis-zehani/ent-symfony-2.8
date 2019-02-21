@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="« L'enseignement devrait être ainsi : celui qui le reçoit le recueille comme un don inestimable mais jamais comme une contrainte pénible »" />
+    <meta name="author" content="">
+    <link rel="icon" href="{{ asset('bootstrap/img/favicon.ico') }}">
+
+    <title>Smartgraphe - Espace Privé</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href={{ asset('bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    
+    
+  	<link href={{ asset('bootstrap/css/bootstrap.css') }} rel="stylesheet">
+    <link href={{ asset('bootstrap/css/dataTables.bootstrap4.min.css') }} rel="stylesheet">
+
+    <!-- Imports JS de la DATATABLE (utile aussi pour la Modale), laisser dans le head-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    
+    <SCRIPT type="text/javascript">
+        var idSuppression = 0;
+    </SCRIPT>
+    
+    <script>
+    function hide3Elements() 
+    {
+    	document.getElementById("cin").style.display = "none";
+        document.getElementById("rc").style.display = "none";
+        document.getElementById("logo").style.display = "none";
+    }
+	</script>
+    
+</head>
+
+<body style="background-color: #fff;font-family: 'Roboto', sans-serif;" onload="hide3Elements()">
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-inverse" style="height:10%;background-color: #48668c;">
+
+    <a class="navbar-brand" style="padding-top:0%;padding-bottom:0%;background-color: #48668c;">
+        <img src="{{ asset('bootstrap/img/logo.png') }}" width="70%" alt="Acceuil" style="float:left">
+    </a>
+  	<button class="navbar-toggler" style="background-color: #4e5053" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarText" style="background-color: #48668c;text-align:left;">  
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+
+        <span class="navbar-text" style="color: #ffffff;">
+            &nbsp;Tunis le : {{ "now"|date("d/m/Y", "Europe/Paris") }} &nbsp;&nbsp;<a href="{{app.request.basePath}}/smartgraphe/"><img src={{ asset('bootstrap/img/exit.png') }} width="25" height="25"></a>
+        </span>
+  </div>
+</nav>
+
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:100%;overflow-y: scroll ;" >
+	
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Ecole-->
+        <div class="col-sm-4" style="text-align: left;-overflow-y: scroll;">
+            <form action="../addEcole/" method="post" name="formEcoles" id="formEcoles" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #48668c;font-size: 18px;font-weight: 600;">Gestion des écoles</label>
+                </div>
+                
+                <div class="form-group">
+                        <label for="inputNom">Nom école (*)</label>
+                        <input type="text" class="form-control" id="nomecole" name="nomecole"  required>
+                </div>
+                
+                <div class="form-group">
+                        <label for="inputPrenom">Responsable école</label>
+                        <input type="text" class="form-control" id="responsableecole" name="responsableecole">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputLogin">Login * <b>(unique)</b></label>
+                        <input type="text" class="form-control" id="loginadmin" name="loginadmin" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword">Password *</label>
+                        <input type="text" class="form-control" id="passwordadmin" name="passwordadmin" required>
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="inputAddress">Addresse postale</label>
+                    <input type="text" class="form-control" id="adresse" name="adresse">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Email * <b>(unique)</b></label>
+                        <input type="email" class="form-control" id="emailecole" name="emailecole" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputTel">Site web</label>
+                        <input type="text" class="form-control" id="sitewebecole" name="sitewebecole" >
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Fixe</b></label>
+                        <input type="tel" class="form-control" id="fixeecole" name="fixeecole" >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputTel">Mobile</label>
+                        <input type="tel" class="form-control" id="mobileecole" name="mobileecole">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputDescriptionEcole"><b>Description de l'école </b></label>
+                    <textarea class="form-control" rows="3" id="descriptionecole" name="descriptionecole"></textarea>
+                </div>
+                
+                <div class="form-group" id="cin" name="cin">
+                    <label for="inputcinEcole" id="inputcinEcole"><b>CIN</b></label>
+                    <input class="form-control" type="file" name="cinecole" id="cinecole" >
+                </div>
+                
+                <div class="form-group" id="rc">
+                    <label for="inputrcEcole" id="inputrcEcole"><b>R.C</b></label>
+                    <input class="form-control" type="file" name="rcecole" id="rcecole" >
+                </div>
+                
+                <div class="form-group" id="logo">
+                    <label for="inputlogoEcole" id="inputlogoEcole"><b>Logo (160 x 60) PX</b></label>
+                    <input class="form-control" type="file" name="logoecole" id="logoecole" >
+                </div>
+ 
+
+                <div class="form-group">
+                     <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Ajouter une école" style="background-color: #189d8c;border: none;"/>
+                </div>
+
+                <input type="hidden" id="idEcole" name="idEcole" value="idEcole"/>
+                
+            </form>
+
+            <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  onclick="reset();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;"/>
+
+					<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+					
+                    {% for flashMessage in app.session.flashbag.get('Exception') %}
+                        <br><h6 style="color: #e3352c;font-weight: 600;" id="Exception">{{ flashMessage }}</h6>
+                    {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-8" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="5%"></th>
+                    <th width="5%">ID</th>
+                    <th>École</th>
+                    <th>Resposable</th>
+                    <th width="12%">Élèves</th>
+                    <th width="12%">Parents</th>
+                    <th width="12%" style="color:red">Connexions</th>
+                    <th width="5%"></th>
+                    <th width="5%"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for key in allEcoles %}
+                    <tr>
+                        <td style="background-color: #FFFFFF">
+                            <a href="#" onclick="idSuppression={{key.idEcole}};document.getElementById('idEcoleDelete').setAttribute('value',idSuppression); $('#ModaleEcole').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td>{{ key.idEcole }}</td>
+                        <td>{{ key.nomEcole }}</td>
+                        <td>{{ key.responsableEcole }}</td>
+                        <td>{{ key.nombreEleves }}</td>
+                        <td>{{ key.nombreParents }}</td>
+                        <td>{{ key.totalAnalytics }}</td>
+                        <td style="background-color: #FFFFFF"><a href="#" id="btnModifier" onclick="modifier('{{ key.idEcole }}','{{ key.nomEcole }}','{{ key.responsableEcole }}','{{ key.loginAdmin }}','{{ key.passwordAdmin }}','{{ key.adresse }}','{{ key.emailEcole }}','{{ key.sitewebEcole }}','{{ key.fixeEcole }}','{{ key.mobileEcole }}','{{ key.descriptionEcole | replace({"'": "\\'",'\r\n': '\\r\\n', '\n': '\\n', '\r': '\\r'}) }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a></td>
+                    	<td style="background-color: #FFFFFF">
+                        	<form action="../showEcole/" method="post">
+                        		<input type="hidden" id="idEcoleAfficher" name="idEcoleAfficher" value={{ key.idEcole }} />
+                             	<input src="{{ asset('bootstrap/img/afficher.jpg') }}" type="image" width="20" height="20" style="-margin-top:3px;">
+                        	</form>  
+                    	</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-row">
+            <!--------------------------- Feêtre POP-UP la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleEcole" tabindex="-1" role="dialog" aria-labelledby="exampleModaleEcoleTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="../deleteEcole/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer une école</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Attention, vous êtes sur le point de supprimer cette école.
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" id="idEcoleDelete" name="idEcoleDelete" />
+              
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau)-->
+<SCRIPT>
+    function modifier(idEcole, nomecole, responsableEcole,loginadmin,passwordadmin,adresse,emailecole,sitewebecole,fixeecole,mobileecole,descriptionecole)
+    {
+    	document.getElementById("idEcole").value = idEcole;
+        document.getElementById("nomecole").value = nomecole;
+        document.getElementById("responsableecole").value = responsableEcole;
+        document.getElementById("loginadmin").value = loginadmin;
+        document.getElementById("passwordadmin").value = passwordadmin;
+        document.getElementById("adresse").value = adresse;
+        document.getElementById("emailecole").value = emailecole;
+        document.getElementById("sitewebecole").value = sitewebecole;
+        document.getElementById("fixeecole").value = fixeecole;
+        document.getElementById("mobileecole").value = mobileecole;
+        document.getElementById("descriptionecole").value = descriptionecole;
+
+        document.getElementById("cin").style.display = "block";
+        document.getElementById("rc").style.display = "block";
+        document.getElementById("logo").style.display = "block";
+
+        document.getElementById("btnAjouter").value = 'Modifier une école';
+        
+        var formulaire = document.getElementById('formEcoles');
+        formulaire.setAttribute("action", "../updateEcole/");
+        
+    }
+</SCRIPT>
+
+<!-- Clique sur le bouton Reset(dans le formulaire)-->
+<SCRIPT>
+    function reset()
+    {
+
+        document.getElementById("idEcole").value = '';
+        document.getElementById("nomecole").value = '';
+        document.getElementById("responsableecole").value = '';
+        document.getElementById("loginadmin").value = '';
+        document.getElementById("passwordadmin").value = '';
+        document.getElementById("adresse").value = '';
+        document.getElementById("emailecole").value = '';
+        document.getElementById("sitewebecole").value = '';
+        document.getElementById("fixeecole").value = '';
+        document.getElementById("mobileecole").value = '';
+        document.getElementById("descriptionecole").value = '';
+
+        document.getElementById("cin").style.display = "none";
+        document.getElementById("rc").style.display = "none";
+        document.getElementById("logo").style.display = "none";
+
+        document.getElementById("btnAjouter").value = 'Ajouter une école';
+        
+        var formulaire = document.getElementById('formEcoles');
+        formulaire.setAttribute("action", "../addEcole/");
+
+    }
+</SCRIPT>
+
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Assiduites-->
+<SCRIPT type="text/javascript">
+    $('#ModaleEcole').on('shown.bs.modal', function () {
+        
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+       
+    })
+</SCRIPT>
+
+
+<!-- Configuration de la DATATABLE-->
+<SCRIPT type="text/javascript">
+    $(document).ready(function() {
+        $('#my_table').DataTable({
+            "fixedColumns": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "scrollY": true,
+            "language": {
+                "sProcessing": "Traitement en cours ...",
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "sZeroRecords": "Aucun résultat trouvé",
+                "sEmptyTable": "Aucune donnée disponible",
+                "sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+                "sInfoEmpty": "Aucune ligne affichée",
+                "sInfoFiltered": "(Filtrer un maximum de _MAX_)",
+                "sInfoPostFix": "",
+                "sSearch": "",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Chargement...",
+                "oPaginate": {
+                    "sFirst": "Premier", "sLast": "Dernier", "sNext": "Suivant", "sPrevious": "Précédent"
+                },
+                "oAria": {
+                    "sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+                }
+
+            }
+        });
+    } );
+</SCRIPT>
+
+<!-- Imports JS de Bootstrap-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>  
+
+<!-- Imports JS de la DATATABLE-->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- SESSION TIMEOUT -->	
+<script src={{ asset('bootstrap/js/bootstrap.min.js') }}></script>
+<script src={{ asset('bootstrap/js/jquery.userTimeout.js') }}></script>	
+   
+
+</body>
+</html>

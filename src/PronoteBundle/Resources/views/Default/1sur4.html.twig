@@ -1,0 +1,833 @@
+<div class="table-responsive">
+{% if pageData3 is defined and pageData3|length>0 %}
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;border: 1px solid white;">
+	
+        {% set tomorrow = "tomorrow"|date('l') %}
+
+        {% if tomorrow == "Saturday" %}
+
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+             </div>
+        
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Lundi {{ "now"|date_modify("+3 day")|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+			
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+           
+            </tbody>
+        {% elseif tomorrow == "Sunday" %}
+
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+             </div>
+            
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Lundi {{ "now"|date_modify("+2 day")|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% elseif tomorrow == "Monday"%}
+
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+            </div>
+            
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Lundi {{ "tomorrow"|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% elseif tomorrow == "Tuesday" %}
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+            </div>
+            
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Mardi {{ "tomorrow"|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% elseif tomorrow == "Wednesday" %}
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+            </div>
+            
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Mercredi {{ "tomorrow"|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% elseif tomorrow == "Thursday" %}
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+            </div>
+            
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Jeudi {{ "tomorrow"|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            </tbody>
+        {% else  %}
+            <thead>
+            
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      <input type="hidden" id="idEleve"  name="idEleve"  value="{{ pageData4[0].idEleve }}"/>
+                      <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+            </div>
+            
+            <tr style="background-color: #45a6bf; color: #FFFFFF">
+                <td scope="col" style="font-weight:bold;">Horaires</td>
+                <td scope="col" style="font-weight:bold;">Vendredi {{ "tomorrow"|date("d/m/Y") }}</td>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">8 - 9</td>
+                {% if pageData3.seance_1_1 is not empty %}
+                    {% set data = pageData3.seance_1_1 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">9 - 10</td>
+                {% if pageData3.seance_1_2 is not empty %}
+                    {% set data = pageData3.seance_1_2 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">10 - 11</td>
+                {% if pageData3.seance_1_3 is not empty %}
+                    {% set data = pageData3.seance_1_3 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">11 - 12</td>
+                {% if pageData3.seance_1_4 is not empty %}
+                    {% set data = pageData3.seance_1_4 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">12 - 13</td>
+                {% if pageData3.seance_1_5 is not empty %}
+                    {% set data = pageData3.seance_1_5 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">13 - 14</td>
+                {% if pageData3.seance_1_6 is not empty %}
+                    {% set data = pageData3.seance_1_6 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">14 - 15</td>
+                {% if pageData3.seance_1_7 is not empty %}
+                    {% set data = pageData3.seance_1_7 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">15 - 16</td>
+                {% if pageData3.seance_1_8 is not empty %}
+                    {% set data = pageData3.seance_1_8 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #e7e7e8; color: #000000;font-weight:bold;">16 - 17</td>
+                {% if pageData3.seance_1_9 is not empty %}
+                    {% set data = pageData3.seance_1_9 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#e7e7e8;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #e7e7e8"></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td scope="row" style="width:40%;background-color: #f3f3f4; color: #000000;font-weight:bold;">17 - 18</td>
+                {% if pageData3.seance_1_10 is not empty %}
+                    {% set data = pageData3.seance_1_10 |split('@@') %}
+                    <td style="padding: .1rem;  vertical-align: middle;background-color:#f3f3f4;"><b>{{ data[0] }}</b><br>Salle : {{ data[1] }}</td>
+                {% else %}
+                    <td style="background-color: #f3f3f4"></td>
+                {% endif %}
+            </tr>
+            </tbody>
+
+        {% endif %}
+        
+         
+    </table>
+    {% else %}
+    	<table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;border: 1px solid white;">
+   			<thead>
+            <div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">
+            		<form action="{{app.request.basePath}}/emploi/" method="post">
+                      <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                      {% if pageData4 |length > 0 %}
+         			  	  <input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        			  {% endif %}
+        			  
+                      {% if pageData2 |length > 0 %}
+         			  <input type="hidden" id="idClasse" name="idClasse" value="{{ pageData2[0].idClasse }}"/>
+        			      {% endif %}
+                      <input type="submit" value="EMPLOI DU TEMPS" style="color:white;background-color:#45a6bf;border:0;border-color:#45a6bf;text-decoration: none;cursor: pointer;">
+                    </form> 
+             </div>
+             </thead>
+             
+        	<tbody>
+            <tr>
+                <td style="padding: .15rem; vertical-align: middle;background-color: #FFFFFF;font-weight:bold;text-align: justify;">Aucun emploi du temps n'est encore disponible pour cette classe</td>
+            </tr>
+            </tbody>
+         </table>    
+    {% endif %}
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" style="font-size: 13px;vertical-align: middle;">
+        <thead>
+        
+       	<div class="alert alert-secondary" role="alert" style="padding: .4rem .2rem;margin-bottom:2px;background-color: #45a6bf;border: none; color: #FFFFFF;">MENU DE LA CANTINE</div>
+        </thead>
+        <tbody>
+        {% for key in pageData10 %}
+            <tr>
+                <td style="padding: .15rem; vertical-align: middle;background-color: #FFFFFF;font-weight:bold;text-align: justify;">{{ key.descriptionMenuCantine |capitalize}}</td>
+                {% if key.pathMenuCantine|length > 0 %}
+                    <td style="padding: .15rem; vertical-align: middle;background-color: #FFFFFF;"><a href="{{app.request.basePath}}/{{ key.pathMenuCantine }}" style="color:#775ca1">Télécharger</a></td>
+                {% endif %}
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+

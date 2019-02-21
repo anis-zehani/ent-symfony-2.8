@@ -1,0 +1,201 @@
+{%  include 'PronoteBundle:Professeurs:header.html.twig' %}
+
+<div class="container-fluid" style="padding-top: 10%;background-color: #ffffff; height:88%;overflow-y: scroll ;" >
+    
+    <div class="row align-items-start">
+
+        <!-- Formulaire Ajout / Modification Devoir-->
+        <div class="col-sm-3" style="text-align: left;">
+            <form action="{{app.request.basePath}}/professeur/addDevoir/" method="post" name="formDevoirs" id="formDevoirs">
+
+                <div class="form-group">
+                    <label for="nameScreen" style="color: #ed2b34;font-size: 18px;font-weight: 600;">Gestion des devoirs</label>
+                </div>
+
+                <div class="form-group" onchange="resetListeMatieres();">
+                    <label for="inputClasseDevoir"><b>Classe concernée (*)</b></label>
+
+                    <select id="idClasseDevoir" name="idClasseDevoir" style="border-radius: 10px;width: 100%" required>
+                        <option value="">Vous devez choisir une classe</option>
+                        {% for key in allClasses %}
+                            <option value="{{ key.idClasse }}">{{ key.nomClasse|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputIdMatiereDevoir"><b>Matière (*)</b></label>
+
+                    <select id="idMatiereDevoir" name="idMatiereDevoir" style="border-radius: 10px;width: 100%" required >
+                        <option value="">Vous devez choisir une matière</option>
+                        {% for key in allMatieres %}
+                            <option value="{{ key.idMatiere }}">{{ key.nomMatiere|capitalize }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDetailsDevoir"><b>Détails du devoirs (*)</b></label>
+                    <textarea class="form-control" rows="5" id="detailsDevoir" name="detailsDevoir" required ></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="inputDonnePour"><b>Pour la date (*)</b></label>
+                    <input type="date" class="form-control" id="donnePour" name="donnePour" required >
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnAjouter" value="Ajouter un devoir" style="background-color: #189d8c;border: none;" />
+                </div>
+
+                <input type="hidden" id="idDevoir" name="idDevoir" value="idDevoir"/>
+                <input type="hidden" id="idProfesseur" name="idProfesseur" value="{{app.session.get('idProfesseur')}}" />
+            </form>
+
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-sm btn-block"  id="btnReset" onclick="resetDevoir();" value="Tout réinitialiser" style="background-color: #ed2b34;border: none;" />
+
+				<br><label for="champsobligatoire"><b>(*) Champs obligatoire</b></label>
+
+                {% for flashMessage in app.session.flashbag.get('Exception') %}
+                    <br><h6 style="color: #e3352c;" id="Exception">{{ flashMessage }}</h6>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="col-sm-9" style="text-align: left;">
+
+            <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size:13px;overflow-x: scroll ;overflow-y: scroll ;">
+                <thead>
+                <tr>
+                    <th width="10%">Supprimer</th>
+                    <th>Détails du devoirs</th>
+                    <th width="15%">Donné le</th>
+                    <th width="15%">Donné Pour</th>
+                    <th>Matière</th>
+                    <th>Classe</th>
+                    <th width="10%">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key in allDevoirs %}
+                    <tr>
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            <a href="#" onclick="idSuppression={{key.idDevoir}}; document.getElementById('idDevoirDelete').setAttribute('value',idSuppression); $('#ModaleDevoir').modal();"><img src="{{ asset('./bootstrap/img/delete.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.detailsDevoir|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.donneLe }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.donnePour }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.nomMatiereDevoir|capitalize }}</td>
+                        <td style=";background-color: #FFFFFF;font-size: 13px;">{{ key.nomClasseDevoir|capitalize }}</td>
+                        <td style="text-align:center;background-color: #FFFFFF;font-size: 13px;">
+                            <a href="#" id="btnModifier" onclick="modifierDevoir('{{ key.idDevoir }}','{{ key.detailsDevoir |replace({"'": "\\'",'\r\n': '\\r\\n', '\n': '\\n', '\r': '\\r'}) }}','{{ key.donnePour |date("Y-m-d")}}','{{ key.idMatiereDevoir }}','{{ key.idClasseDevoir }}');"><img src="{{ asset('./bootstrap/img/update.jpg') }}" width="20" height="20" ></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-row">
+            <!--------------------------- Feêtre POP-UP la Modale ------------------------------------------------>
+            <div class="modal fade" id="ModaleDevoir" tabindex="-1" role="dialog" aria-labelledby="exampleModaleDevoirTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <form action="{{app.request.basePath}}/professeur/deleteDevoir/" method="post" name="formModale" id="formModale">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Supprimer un devoir</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Attention, vous êtes sur le point de supprimer ce devoir.
+                            </div>
+                            <div class="modal-footer">
+                            	<input type="hidden" id="idDevoirDelete" name="idDevoirDelete" />
+                            	
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <button type="submit" class="btn btn-primary" id="btnValider">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- OnChange Liste des classes-->
+<SCRIPT>
+    function resetListeMatieres()
+    {
+        /*document.getElementById("idMatiereDevoir").disabled = false;
+        document.getElementById("detailsDevoir").disabled = false;
+        document.getElementById("donnePour").disabled = false;
+        document.getElementById("btnAjouter").disabled = false;
+        document.getElementById("btnReset").disabled=false;*/
+
+        /*var idClasse = document.getElementById("idClasseDevoir");
+
+        //if (i == 0) return;
+
+        if( idClasse == 0){
+
+            document.getElementById("idMatiereDevoir").disabled = true;
+            document.getElementById("detailsDevoir").disabled = true;
+            document.getElementById("donnePour").disabled = true;
+            document.getElementById("btnAjouter").disabled = true;
+            document.getElementById("btnReset").disabled=true;
+
+        }*/
+    }
+</SCRIPT>
+
+
+<!-- Clique sur l'icône Modifier (dans le tableau Devoirs)-->
+<SCRIPT>
+    function modifierDevoir(idDevoir, detailsDevoir, donnePour ,idMatiereDevoir , idClasseDevoir)
+    {
+
+        document.getElementById("idDevoir").value = idDevoir;
+        document.getElementById("detailsDevoir").value = detailsDevoir;
+        document.getElementById("donnePour").value = donnePour;
+        document.getElementById("idMatiereDevoir").value = idMatiereDevoir;
+        document.getElementById("idClasseDevoir").value = idClasseDevoir;
+
+        document.getElementById("btnAjouter").value = 'Modifier un devoir';
+        var formulaire = document.getElementById('formDevoirs');
+        formulaire.setAttribute("action", "{{app.request.basePath}}/professeur/updateDevoir/");
+
+    }
+</SCRIPT>
+<!-- Clique sur le bouton Reset(dans le formulaire Devoirs)-->
+<SCRIPT>
+    function resetDevoir()
+    {
+
+        document.getElementById("detailsDevoir").value = '';
+        document.getElementById("donnePour").value = '';
+        document.getElementById("idMatiereDevoir").value = '';
+        document.getElementById("idClasseDevoir").value = '';
+
+        document.getElementById("btnAjouter").value = 'Ajouter un devoir';
+        var formulaire = document.getElementById('formDevoirs');
+        formulaire.setAttribute("action", "{{app.request.basePath}}/professeur/addDevoir/");
+    }
+</SCRIPT>
+
+<!-- Code qui s'exécute quand j'ouvre la Modale sur Devoirs-->
+<SCRIPT type="text/javascript">
+    $('#ModaleDevoir').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus');
+        idSuppression=0;
+    })
+</SCRIPT>
+
+{%  include 'PronoteBundle:Professeurs:footer.html.twig' %}

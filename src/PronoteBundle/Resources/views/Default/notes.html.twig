@@ -1,0 +1,82 @@
+{% include 'PronoteBundle:Default:header.html.twig' %}
+
+        {% if pageData4|length > 1 %}
+            {% set nombreNotes =  pageData4|length %}	
+        {% else %}
+        	{% set nombreNotes =  0 %}	
+        {% endif %}
+<div class="container-fluid" style="height: 88%;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="background-color: #9cd100;color:#fff;vertical-align:middle;">
+            <form action="{{app.request.basePath}}/accueil/" method="post">
+                  <input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+                  <input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+                  <input type="submit" value="Acceuil" style="padding-left:3px;color:white;background-color:#9cd100;border:0;cursor: pointer;">
+            </form>/ Toutes les notes</li>
+        </ol>
+        
+    </nav>
+    
+ 
+    <div class="row align-items-start">
+        <div class="col-sm-6" style="text-align: center;">
+
+			<div class="table-responsive" style="font-size:13px;font-weight: 500;text-align:left;">
+                <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 13px;border: none !important;font-weight: 500;overflow-x: scroll ;overflow-y: scroll ;">
+                    <form action="{{app.request.basePath}}/notes/" method="post">
+                        <h6 style="color:#775ca1;">Afficher les notes à partir du : </h6>
+        				<tr style="background-color: #ffffff;">
+        						<input type="hidden" id="idParent" name="idParent" value="{{pageData1.idParent }}"/>
+  								<input type="hidden" id="idEleve" name="idEleve" value="{{ pageData4[0].idEleve }}"/>
+        						<td><input type="date" name="dateNote" style="min-height:35px;max-width:170px;" class="form-control"> </td> 
+                                <td><input type="submit" value="Valider"  class="btn btn-primary" style="width:100%;background-color:#45a6bf; border:none;"></td>
+                        		
+                        <tr>
+                    </form>
+                </table>
+			</div>
+
+            <div class="table-responsive" >
+                <table id="my_table" class="table table-striped table-bordered" cellspacing="0" width="100%" style="font-size: 13px;font-weight: 500;overflow-x: scroll ;overflow-y: scroll ;">
+                    <thead>
+                    <tr style="background-color: #45a6bf; color: #ffffff;">
+                        <th scope="col">Matières</th>
+                        <th scope="col">Notes ({{ nombreNotes }})</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if pageData4 is defined %}
+                        {% for key in pageData4 %}
+                        	{% if key.messagePasDeNotes is defined %}
+                    			<tr>
+                    				<td></td>
+                                    <td style="background-color: #fff;padding: .15rem; vertical-align: middle;-color: #ed494c;font-weight:600;">{{ key.messagePasDeNotes }}</td>
+                                </tr>
+                    		{% else %}
+                            <tr>
+                            		<td scope="row" style="width:40%; color: #000000;vertical-align:middle;font-weight:600;">{{ key.nomMatiere |capitalize}}</td> 
+                                    {% if key.note > 9.99 %}
+                                    <td style="background-color: #fff;padding: .15rem; vertical-align: middle;color: #775ca1;">{{ key.note }}<br>({{ key.dateNote }})</td>  
+                                    {% else %}	
+                                    <td style="background-color: #fff;padding: .15rem; vertical-align: middle;color: #ed494c;font-weight:600;">{{ key.note }}<br>({{ key.dateNote }})</td>
+                                    {% endif %}
+                			</tr>
+                			{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+
+
+                </table>
+            </div>
+
+
+        </div>
+        
+        <div class="col-sm-6">
+					<img src="{{ asset('bootstrap/img/notes.jpg') }}" width="100%" height="90%" style="float:right">
+        </div>
+        
+
+
+{% include 'PronoteBundle:Default:footer.html.twig' %}
